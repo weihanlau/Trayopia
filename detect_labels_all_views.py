@@ -69,18 +69,12 @@ for registered_dir in drawer_folders:
 
         print(f"Processing {path.name}...")
 
-        result = client.run_workflow(
-            workspace_name="aiworkstation-nature-ca",
-            workflow_id="entomology-unit-trays",
-            images={
-                "image": str(path)
-            },
-            use_cache=True
+        result = client.infer(
+            str(path),
+            model_id="entomology-unit-trays/3"
         )
 
-        predictions = (
-            result[0]["predictions"]["predictions"]
-        )
+        predictions = result["predictions"]
 
         label_predictions = [
             p for p in predictions

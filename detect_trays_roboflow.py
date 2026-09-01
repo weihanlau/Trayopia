@@ -99,13 +99,9 @@ for registered_folder in drawer_folders:
     # ROBOFLOW INFERENCE
     # --------------------------------------------------
 
-    result = client.run_workflow(
-        workspace_name="aiworkstation-nature-ca",
-        workflow_id="entomology-unit-trays",
-        images={
-            "image": str(image_path)
-        },
-        use_cache=True
+    result = client.infer(
+        str(image_path),
+        model_id="entomology-unit-trays/3"
     )
 
 
@@ -113,9 +109,7 @@ for registered_folder in drawer_folders:
     # EXTRACT PREDICTIONS
     # --------------------------------------------------
 
-    predictions = (
-        result[0]["predictions"]["predictions"]
-    )
+    predictions = result["predictions"]
 
     tray_predictions = [
         p for p in predictions

@@ -2,7 +2,7 @@
 
 Trayopia is a simple tool for combining multiple images of entomological drawers into a composite that provides unobscured views of specimens and labels within individual unit trays.
 
-Whole-drawer imaging plays an increasing role as a starting point for digitizing large entomological collections, but producing a single image that clearly captures every specimen and label can be challenging without specialized imaging systems (e.g. robotic imaging rigs, telecentric optical systems, etc.). One major problem that is often encounted in whole-drawer imaging is that entomological unit trays can obscure specimens and labels when drawers are photographed directly from above, particularly when objects sit close to the walls of a tray.
+Whole-drawer imaging plays an increasing role as a starting point for digitizing large entomological collections, but producing a single image that clearly captures every specimen and label can be challenging without specialized imaging equipment (e.g. robotic imaging rigs, telecentric optical systems, etc.). One major problem that is often encounted in whole-drawer imaging is that entomological unit trays can obscure specimens and labels when drawers are photographed directly from above, particularly when objects sit close to the walls of a tray.
 
 Trayopia addresses this problem by combining information from multiple photographs of the same drawer taken from different positions. The position of the drawer relative to the camera is changed between photographs, providing different views into each unit tray and revealing contents that may be obscured in other images.
 
@@ -29,7 +29,7 @@ Additional methods for selecting the optimal view of each unit tray will be adde
 
 ## Image capture protocol
 
-Before imaging, place ArUco markers (https://fodi.github.io/arucosheetgen/) around the drawer as shown in the example below. The markers provide reference points that allow Trayopia to align the drawer across photographs.
+Before imaging, place [ArUco markers](https://fodi.github.io/arucosheetgen/) around the drawer as shown in the example below. The markers provide reference points that allow Trayopia to align the drawer across photographs.
 
 Trayopia uses seven photographs per drawer. 
 
@@ -93,11 +93,29 @@ Trayopia/
 └── ...
 ```
 
-## Input
+### Roboflow model
+
+Trayopia uses a pretrained Roboflow model to detect unit trays and unit-tray labels. The most up-to-date Trayopia model can be found here: https://universe.roboflow.com/aiworkstation-nature-ca 
+
+The default model used by Trayopia is:
+
+```yaml
+roboflow:
+  workspace: "aiworkstation-nature-ca"
+  model: "entomology-unit-trays"
+```
+
+## Input and Running Trayopia
 
 Trayopia requires seven images per drawer, captured in the order described in the [Image capture protocol](#image-capture-protocol). Image filenames do not matter, but **the order of the images does**.
 
-Place the images in a single folder. When the pipeline is run, you will be prompted to provide the path to this folder when running the pipeline.
+Place the images in a single folder. When the pipeline is run, you will be prompted to provide the path to this folder.
+
+To run Trayopia, activate your Python environment and run:
+
+```bash
+python run_pipeline.py
+```
 
 ## Output
 
