@@ -1,0 +1,21 @@
+# Secrets
+.env
+
+# Python
+__pycache__/
+*.pyc
+drawerenv/
+.venv/
+venv/
+
+# Pipeline-generated data
+drawers/
+registered/
+homographies/
+detections/
+composites/
+
+# OS/editor junk
+.DS_Store
+Thumbs.db
+.vscode/
