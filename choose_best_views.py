@@ -8,7 +8,7 @@ from pathlib import Path
 # SETTINGS
 # --------------------------------------------------
 
-LABEL_AREA_OVERRIDE = 0.20
+LABEL_AREA_OVERRIDE = 0.2
 
 
 # --------------------------------------------------
