@@ -2,15 +2,14 @@
 
 Trayopia is a simple tool for combining multiple images of entomological drawers into a composite that provides unobscured views of specimens and labels within individual unit trays.
 
-Whole-drawer imaging plays an increasing role as a starting point for digitizing entomological collections, but producing a single image that clearly captures every specimen and label can be challenging without specialized imaging systems (e.g. robotic imaging rigs, telecentric optical systems, etc.). One major problem that is often encounted in whole-drawer imaging is that entomological unit trays can obscure specimens and labels when drawers are photographed directly from above, particularly when objects sit close to the walls of a tray.
+Whole-drawer imaging plays an increasing role as a starting point for digitizing large entomological collections, but producing a single image that clearly captures every specimen and label can be challenging without specialized imaging systems (e.g. robotic imaging rigs, telecentric optical systems, etc.). One major problem that is often encounted in whole-drawer imaging is that entomological unit trays can obscure specimens and labels when drawers are photographed directly from above, particularly when objects sit close to the walls of a tray.
 
 Trayopia addresses this problem by combining information from multiple photographs of the same drawer taken from different positions. The position of the drawer relative to the camera is changed between photographs, providing different views into each unit tray and revealing contents that may be obscured in other images.
 
 Trayopia registers these images into a common coordinate system, identifies individual unit trays and their labels, selects the best view for each tray, and assembles the selected views into a single composite image. The resulting composite image can then be used as input for more complex whole-drawer processing pipelines, such as DrawerDissect.
 
 <p align="center">
-  <img src="images/DrawerExample.JPG" width="48%">
-  <img src="images/CompositeExample.JPG" width="48%">
+  <img src="images/Trayopia.jpg">
 </p>
 
 ## How it works
@@ -19,18 +18,18 @@ Trayopia processes multiple photographs of the same drawer through four main ste
 
 1. **Image registration:** ArUco markers are used to align each photograph to a common coordinate system.
 2. **Tray and label detection:** An object-detection model (Roboflow) identifies individual unit trays and their labels.
-3. **View selection:** For each tray, Trayopia selects a view based on its position relative to the camera and the visibility of its label.
-4. **Compositing:** The selected tray views are assembled into a single composite image that preserves the original whole-drawer image.
+3. **View selection:** For each unit tray, Trayopia selects a view from one of the images supplied based on the unit tray's position relative to the camera and the visibility of its label.
+4. **Compositing:** The selected unit tray images are assembled into a single composite image that preserves the original whole-drawer image.
 
 ## How Trayopia assigns "best views"
 
-Currently, Trayopia uses a tiered approach to select the best view of each unit tray that will make thier way into the final composite imgae. Trayopia favours views in which the tray is closest to the centre of the camera (based on homography distance), while using the unit tray label area to override this choice when a unit tray's label is substantially more visible in another image. The logic is that trays closer to the camera centre are generally viewed more directly from above, while a larger detected label area provides an additional indication that the contents of the tray are less obscured by the tray walls.
+Currently, Trayopia uses a tiered approach to select the best view of each unit tray that will make thier way into the final composite imgae. Trayopia favours views in which the tray is closest to the centre of the camera (based on homography distance), while using the unit tray label area to override this choice when a unit tray's label is substantially more visible in another image. Unit trays closer to the camera centre are generally viewed more directly from above, while a larger detected label area provides an additional indication that the contents of the unit tray are less obscured by the unit tray walls.
 
 Additional methods for selecting the optimal view of each unit tray will be added in future versions of Trayopia.
 
 ## Image capture protocol
 
-Before imaging, place ArUco markers around the drawer as shown in the example below. The markers provide reference points that allow Trayopia to align the drawer across photographs.
+Before imaging, place ArUco markers (https://fodi.github.io/arucosheetgen/) around the drawer as shown in the example below. The markers provide reference points that allow Trayopia to align the drawer across photographs.
 
 Trayopia uses seven photographs per drawer. 
 
