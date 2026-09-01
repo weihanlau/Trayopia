@@ -8,6 +8,11 @@ Trayopia addresses this problem by combining information from multiple photograp
 
 Trayopia registers these images into a common coordinate system, identifies individual unit trays and their labels, selects the best view for each tray, and assembles the selected views into a single composite image. The resulting composite image can then be used as input for more complex whole-drawer processing pipelines, such as DrawerDissect.
 
+<p align="center">
+  <img src="images/DrawerExample.JPG" width="48%">
+  <img src="images/CompositeExample.JPG" width="48%">
+</p>
+
 ## How it works
 
 Trayopia processes multiple photographs of the same drawer through four main steps:
@@ -79,7 +84,7 @@ Create a file named `.env` in the main `Trayopia` directory and add your Roboflo
 ROBOFLOW_API_KEY=your_roboflow_api_key_here
 ```
 
-Your directory should then look like:
+Your directory should look like:
 
 ```text
 Trayopia/
@@ -105,4 +110,4 @@ If you use Trayopia in your work, please cite this GitHub repository.
 
 ## Etymology
 
-**Trayopia** is a play on *myopia*. Suffering from pesky unit tray walls obscuring your specimens and labels? You've got a case of Trayopia... which is also the name of this tool. We should have thought more about the name of this thing.
+Trayopia is a play on *myopia*. Suffering from pesky unit tray walls obscuring your specimens and labels? You've got a case of Trayopia... which is also the name of this tool. We should have thought more about the name of this thing.
