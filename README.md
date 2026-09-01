@@ -17,13 +17,15 @@ Trayopia processes multiple photographs of the same drawer through four main ste
 3. **View selection:** For each tray, Trayopia selects a view based on its position relative to the camera and the visibility of its label.
 4. **Compositing:** The selected tray views are assembled into a single composite image that preserves the original whole-drawer image.
 
-## Image capture protocol
+## How Trayopia assigns "best views"
+
+Currently, Trayopia uses a tiered approach to select the best view of each unit tray that will make thier way into the final composite imgae. Trayopia favours views in which the tray is closest to the centre of the camera (based on homography distance), while using the unit tray label area to override this choice when a unit tray's label is substantially more visible in another image. The logic is that trays closer to the camera centre are generally viewed more directly from above, while a larger detected label area provides an additional indication that the contents of the tray are less obscured by the tray walls.
+
+Additional methods for selecting the optimal view of each unit tray will be added in future versions of Trayopia.
 
 ## Image capture protocol
 
 Before imaging, place ArUco markers around the drawer as shown in the example below. The markers provide reference points that allow Trayopia to align the drawer across photographs.
-
-
 
 Trayopia uses seven photographs per drawer. 
 
@@ -39,7 +41,7 @@ For each additional photograph, reposition the drawer relative to the camera so 
 
 ## Installation
 
-Clone the repository and create a Python 3.12 virtual environment.
+Clone the repository and create a Python virtual environment.
 
 ### Installing on Windows
 
@@ -103,4 +105,4 @@ If you use Trayopia in your work, please cite this GitHub repository.
 
 ## Etymology
 
-**Trayopia** is a play on *myopia*. Suffering from pesky unit-tray walls obscuring your specimens? You've got a case of Trayopia... which is also the name of this tool. We should have thought more about the name of this thing.
+**Trayopia** is a play on *myopia*. Suffering from pesky unit tray walls obscuring your specimens and labels? You've got a case of Trayopia... which is also the name of this tool. We should have thought more about the name of this thing.
