@@ -18,8 +18,8 @@ Trayopia processes multiple photographs of the same drawer through four main ste
 
 1. **Image registration:** ArUco markers are used to align each photograph to a common coordinate system.
 2. **Tray and label detection:** An object-detection model (Roboflow) identifies individual unit trays and their labels.
-3. **View selection:** For each unit tray, Trayopia selects a view from one of the images supplied based on the unit tray's position relative to the camera and the visibility of its label.
-4. **Compositing:** The selected unit tray images are assembled into a single composite image that preserves the original whole-drawer image.
+3. **View selection:** For each unit tray, Trayopia selects a view from one of the images supplied based on the unit tray's position relative to the camera and the visibility of the unit tray's label.
+4. **Compositing:** The selected unit tray images are assembled into a single composite image that preserves the appearance of the original whole-drawer image.
 
 ## How Trayopia assigns "best views"
 
