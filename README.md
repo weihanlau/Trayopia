@@ -58,7 +58,7 @@ For each additional photograph, reposition the drawer relative to the camera so 
 
 Clone the repository and create a Python virtual environment.
 
-### Installing on Windows
+#### Installing on Windows
 
 ```powershell
 git clone https://github.com/weihanlau/Trayopia.git
@@ -70,7 +70,7 @@ py -3.12 -m venv drawerenv
 python -m pip install -r requirements.txt
 ```
 
-### Installing on macOS / Linux
+#### Installing on macOS / Linux
 
 ```bash
 git clone https://github.com/weihanlau/Trayopia.git
@@ -84,7 +84,7 @@ python -m pip install -r requirements.txt
 
 Trayopia has been developed and tested using **Python 3.12**.
 
-### Configure the Roboflow API key
+#### Configure the Roboflow API key
 
 Trayopia uses Roboflow for unit tray and unit tray label detection. A Roboflow API key is required to run the pipeline.
 
@@ -104,7 +104,7 @@ Trayopia/
 └── ...
 ```
 
-### Roboflow model
+#### Roboflow model
 
 Trayopia uses a pretrained Roboflow model to detect unit trays and unit tray labels. The most up-to-date Trayopia model can be found here: https://universe.roboflow.com/aiworkstation-nature-ca 
 
