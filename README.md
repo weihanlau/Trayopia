@@ -75,7 +75,7 @@ Trayopia has been developed and tested using **Python 3.12**.
 
 ### Configure the Roboflow API key
 
-Trayopia uses Roboflow for unit-tray and label detection. A Roboflow API key is required to run the pipeline.
+Trayopia uses Roboflow for unit tray and unit tray label detection. A Roboflow API key is required to run the pipeline.
 
 Create a file named `.env` in the main `Trayopia` directory and add your Roboflow API key:
 
