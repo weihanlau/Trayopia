@@ -3,9 +3,7 @@ import numpy as np
 from pathlib import Path
 
 
-# --------------------------------------------------
-# SETTINGS
-# --------------------------------------------------
+############################ SETTINGS ############################
 
 drawers_folder = Path("drawers")
 registered_root = Path("registered")
@@ -17,9 +15,7 @@ registered_root.mkdir(exist_ok=True)
 homography_root.mkdir(exist_ok=True)
 
 
-# --------------------------------------------------
-# ARUCO SETUP
-# --------------------------------------------------
+############################ ARUCO ############################
 
 dictionary = cv2.aruco.getPredefinedDictionary(
     cv2.aruco.DICT_ARUCO_ORIGINAL
@@ -29,9 +25,7 @@ parameters = cv2.aruco.DetectorParameters()
 detector = cv2.aruco.ArucoDetector(dictionary, parameters)
 
 
-# --------------------------------------------------
-# FUNCTION: detect markers
-# --------------------------------------------------
+############################ FUNCTION: detect markers ############################
 
 def detect_markers(image):
 
@@ -51,9 +45,7 @@ def detect_markers(image):
     return marker_dict
 
 
-# --------------------------------------------------
-# FIND DRAWER FOLDERS
-# --------------------------------------------------
+############################ PROCESS DRAWERS ############################
 
 drawer_folders = sorted([
     path for path in drawers_folder.iterdir()
@@ -61,11 +53,6 @@ drawer_folders = sorted([
 ])
 
 print(f"Found {len(drawer_folders)} drawers.")
-
-
-# --------------------------------------------------
-# PROCESS EACH DRAWER
-# --------------------------------------------------
 
 for image_folder in drawer_folders:
 
@@ -81,9 +68,7 @@ for image_folder in drawer_folders:
     output_folder.mkdir(exist_ok=True)
     homography_folder.mkdir(exist_ok=True)
 
-    # ----------------------------------------------
-    # LOAD REFERENCE IMAGE
-    # ----------------------------------------------
+    ###### REFERENCE IMAGE ######
 
     reference_path = image_folder / reference_name
     reference = cv2.imread(str(reference_path))
@@ -103,13 +88,12 @@ for image_folder in drawer_folders:
 
     height, width = reference.shape[:2]
 
-    # Identity homography for reference
+    #homography for reference
     np.save(
         homography_folder / "image_01_H.npy",
         np.eye(3)
     )
 
-    # Save reference image as registered
     cv2.imwrite(
         str(
             output_folder /
@@ -118,18 +102,14 @@ for image_folder in drawer_folders:
         reference
     )
 
-    # ----------------------------------------------
-    # FIND IMAGES
-    # ----------------------------------------------
+    ###### FIND IMAGES ######
 
     image_paths = sorted([
         path for path in image_folder.iterdir()
         if path.suffix.lower() in [".jpg", ".jpeg"]
     ])
 
-    # ----------------------------------------------
-    # REGISTER EACH IMAGE
-    # ----------------------------------------------
+    ###### REGISTER EACH IMAGE ######
 
     for image_path in image_paths:
 
@@ -186,9 +166,7 @@ for image_folder in drawer_folders:
             f"corresponding points"
         )
 
-        # ------------------------------------------
-        # CALCULATE HOMOGRAPHY
-        # ------------------------------------------
+        ###### CALCULATE HOMOGRAPHY ######
 
         H, mask = cv2.findHomography(
             source_points,
@@ -210,9 +188,7 @@ for image_folder in drawer_folders:
             H
         )
 
-        # ------------------------------------------
-        # WARP IMAGE
-        # ------------------------------------------
+        ###### WARP IMAGE ######
 
         registered = cv2.warpPerspective(
             image,
@@ -230,9 +206,7 @@ for image_folder in drawer_folders:
             registered
         )
 
-        # ------------------------------------------
-        # QC OVERLAY
-        # ------------------------------------------
+        ###### OVERLAY ######
 
         overlay = cv2.addWeighted(
             reference,
@@ -267,3 +241,5 @@ for image_folder in drawer_folders:
 
 
 print("\nDone.")
+
+########################################################

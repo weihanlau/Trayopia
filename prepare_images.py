@@ -1,10 +1,8 @@
 from pathlib import Path
 import shutil
 
+############################ SETTINGS ############################
 
-# --------------------------------------------------
-# SETTINGS
-# --------------------------------------------------
 
 IMAGES_PER_DRAWER = 7
 
@@ -15,9 +13,7 @@ input_folder = Path(
 output_folder = Path("drawers")
 
 
-# --------------------------------------------------
-# FIND IMAGES
-# --------------------------------------------------
+############################ FIND IMAGES ############################
 
 if not input_folder.exists():
     raise FileNotFoundError(
@@ -32,9 +28,7 @@ image_paths = sorted([
 print(f"\nFound {len(image_paths)} images.")
 
 
-# --------------------------------------------------
-# CHECK IMAGE COUNT
-# --------------------------------------------------
+############################# CHECK IMAGE COUNT ############################
 
 if len(image_paths) == 0:
     raise ValueError("No JPG/JPEG images found.")
@@ -50,9 +44,7 @@ number_of_drawers = len(image_paths) // IMAGES_PER_DRAWER
 print(f"This corresponds to {number_of_drawers} drawers.")
 
 
-# --------------------------------------------------
-# CREATE DRAWER FOLDERS
-# --------------------------------------------------
+############################# CREATE DRAWER FOLDERS ############################
 
 output_folder.mkdir(exist_ok=True)
 
@@ -93,3 +85,5 @@ for drawer_index in range(number_of_drawers):
 
 
 print("\nDone.")
+
+########################################################

@@ -4,9 +4,7 @@ from pathlib import Path
 from inference_sdk import InferenceHTTPClient, InferenceConfiguration
 
 
-# --------------------------------------------------
-# SETTINGS
-# --------------------------------------------------
+############################ SETTINGS ############################
 
 registered_root = Path("registered")
 
@@ -23,9 +21,7 @@ roboflow_api_key = os.getenv("ROBOFLOW_API_KEY")
 if not roboflow_api_key:
     raise ValueError("ROBOFLOW_API_KEY not found in .env")
 
-# --------------------------------------------------
-# ROBOFLOW ENDPOINT
-# --------------------------------------------------
+############################ ROBOFLOW ENDPOINT ############################
 
 client = InferenceHTTPClient(
     api_url="https://serverless.roboflow.com",
@@ -36,9 +32,7 @@ client = InferenceHTTPClient(
     )
 )
 
-# --------------------------------------------------
-# FIND ALL DRAWERS
-# --------------------------------------------------
+############################ FIND ALL DRAWERS ############################
 
 drawer_folders = sorted([
     path for path in registered_root.iterdir()
@@ -48,9 +42,7 @@ drawer_folders = sorted([
 print(f"Found {len(drawer_folders)} drawers.")
 
 
-# --------------------------------------------------
-# PROCESS EACH DRAWER
-# --------------------------------------------------
+############################ PROCESS EACH DRAWER ############################
 
 for registered_folder in drawer_folders:
 
@@ -84,9 +76,7 @@ for registered_folder in drawer_folders:
     )
 
 
-    # --------------------------------------------------
-    # LOAD IMAGE
-    # --------------------------------------------------
+    ###### LOAD IMAGE ######
 
     image = cv2.imread(str(image_path))
 
@@ -95,9 +85,7 @@ for registered_folder in drawer_folders:
         continue
 
 
-    # --------------------------------------------------
-    # ROBOFLOW INFERENCE
-    # --------------------------------------------------
+    ###### ROBOFLOW INFERENCE ######
 
     result = client.infer(
         str(image_path),
@@ -105,9 +93,7 @@ for registered_folder in drawer_folders:
     )
 
 
-    # --------------------------------------------------
-    # EXTRACT PREDICTIONS
-    # --------------------------------------------------
+    ###### EXTRACT PREDICTIONS ######
 
     predictions = result["predictions"]
 
@@ -132,9 +118,7 @@ for registered_folder in drawer_folders:
     )
 
 
-    # --------------------------------------------------
-    # DRAW TRAY BOXES
-    # --------------------------------------------------
+    ###### DRAW TRAY BOXES ######
 
     output = image.copy()
 
@@ -164,9 +148,7 @@ for registered_folder in drawer_folders:
     )
 
 
-    # --------------------------------------------------
-    # SAVE JSON FILES
-    # --------------------------------------------------
+    ###### SAVE JSON FILES ######
 
     with open(tray_json, "w") as f:
         json.dump(

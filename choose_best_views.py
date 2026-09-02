@@ -4,25 +4,19 @@ import numpy as np
 from pathlib import Path
 
 
-# --------------------------------------------------
-# SETTINGS
-# --------------------------------------------------
+############################ SETTINGS ############################
 
 LABEL_AREA_OVERRIDE = 0.2
 
 
-# --------------------------------------------------
-# ROOT FOLDERS
-# --------------------------------------------------
+############################ ROOT FOLDERS ############################
 
 registered_root = Path("registered")
 homography_root = Path("homographies")
 detections_root = Path("detections")
 
 
-# --------------------------------------------------
-# FIND DRAWERS
-# --------------------------------------------------
+############################ PROCESS DRAWERS ############################
 
 drawer_folders = sorted([
     path for path in registered_root.iterdir()
@@ -30,11 +24,6 @@ drawer_folders = sorted([
 ])
 
 print(f"Found {len(drawer_folders)} drawers.")
-
-
-# --------------------------------------------------
-# PROCESS EACH DRAWER
-# --------------------------------------------------
 
 for registered_dir in drawer_folders:
 
@@ -67,9 +56,7 @@ for registered_dir in drawer_folders:
     print(f"Found {len(image_paths)} registered images")
 
 
-    # --------------------------------------------------
-    # CAMERA CENTRE
-    # --------------------------------------------------
+    ###### CAMERA CENTRE ######
 
     reference_image = cv2.imread(
         str(image_paths[0])
@@ -83,9 +70,7 @@ for registered_dir in drawer_folders:
     ])
 
 
-    # --------------------------------------------------
-    # CHOOSE BEST VIEW
-    # --------------------------------------------------
+    ###### CHOOSE BEST VIEW ######
 
     print("\nBest view for each tray:")
 
@@ -113,9 +98,7 @@ for registered_dir in drawer_folders:
 
         candidates = []
 
-        # ----------------------------------------------
-        # SCORE EACH IMAGE
-        # ----------------------------------------------
+        ###### SCORE EACH IMAGE ######
 
         for path in image_paths:
 
@@ -183,9 +166,7 @@ for registered_dir in drawer_folders:
             })
 
 
-        # --------------------------------------------------
-        # FIRST CHOICE = CLOSEST TO CAMERA
-        # --------------------------------------------------
+        ###### FIRST PASS: CLOSEST TO CAMERA ######
 
         distance_winner = min(
             candidates,
@@ -195,9 +176,7 @@ for registered_dir in drawer_folders:
         chosen = distance_winner
 
 
-        # --------------------------------------------------
-        # LABEL-AREA OVERRIDE
-        # --------------------------------------------------
+        ###### SECOND PASS: LABEL AREA OVERRIDE ######
 
         largest_label_candidate = max(
             candidates,
@@ -226,9 +205,7 @@ for registered_dir in drawer_folders:
             chosen = largest_label_candidate
 
 
-        # --------------------------------------------------
-        # SAVE RESULT
-        # --------------------------------------------------
+        ###### SAVE BEST VIEW ######
 
         best_views.append({
             "tray": tray_number,
@@ -253,9 +230,7 @@ for registered_dir in drawer_folders:
         )
 
 
-    # --------------------------------------------------
-    # SAVE
-    # --------------------------------------------------
+    ###### SAVE RESULTS ######
 
     output_path = (
         detection_dir /
@@ -276,3 +251,5 @@ for registered_dir in drawer_folders:
 
 
 print("\nAll drawers finished.")
+
+########################################################

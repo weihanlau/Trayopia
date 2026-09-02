@@ -3,9 +3,7 @@ from pathlib import Path
 from inference_sdk import InferenceHTTPClient, InferenceConfiguration
 
 
-# --------------------------------------------------
-# SETTINGS
-# --------------------------------------------------
+############################ SETTINGS ############################
 
 registered_root = Path("registered")
 detections_root = Path("detections")
@@ -21,9 +19,7 @@ roboflow_api_key = os.getenv("ROBOFLOW_API_KEY")
 if not roboflow_api_key:
     raise ValueError("ROBOFLOW_API_KEY not found in .env")
 
-# --------------------------------------------------
-# ROBOFLOW ENDPOINT
-# --------------------------------------------------
+############################ ROBOFLOW ENDPOINT ############################
 
 client = InferenceHTTPClient(
     api_url="https://serverless.roboflow.com",
@@ -35,9 +31,7 @@ client = InferenceHTTPClient(
 )
 
 
-# --------------------------------------------------
-# FIND DRAWERS
-# --------------------------------------------------
+############################ FIND DRAWERS ############################
 
 drawer_folders = sorted([
     path for path in registered_root.iterdir()
@@ -47,9 +41,7 @@ drawer_folders = sorted([
 print(f"Found {len(drawer_folders)} drawers.")
 
 
-# --------------------------------------------------
-# PROCESS EACH DRAWER
-# --------------------------------------------------
+############################ PROCESS EACH DRAWER ############################
 
 for registered_dir in drawer_folders:
 
@@ -111,3 +103,5 @@ for registered_dir in drawer_folders:
 
 
 print("\nAll drawers finished.")
+
+########################################################

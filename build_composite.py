@@ -3,9 +3,7 @@ import cv2
 from pathlib import Path
 
 
-# --------------------------------------------------
-# ROOT FOLDERS
-# --------------------------------------------------
+############################ ROOT FOLDERS ############################
 
 registered_root = Path("registered")
 detections_root = Path("detections")
@@ -14,9 +12,7 @@ composites_root = Path("composites")
 composites_root.mkdir(exist_ok=True)
 
 
-# --------------------------------------------------
-# FIND DRAWERS
-# --------------------------------------------------
+############################ PROCESS DRAWERS ############################
 
 drawer_folders = sorted([
     path for path in registered_root.iterdir()
@@ -24,11 +20,6 @@ drawer_folders = sorted([
 ])
 
 print(f"Found {len(drawer_folders)} drawers.")
-
-
-# --------------------------------------------------
-# PROCESS EACH DRAWER
-# --------------------------------------------------
 
 for registered_dir in drawer_folders:
 

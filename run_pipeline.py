@@ -1,6 +1,7 @@
 import subprocess
 import sys
 
+########################################################
 
 scripts = [
     "prepare_images.py",
@@ -30,3 +31,5 @@ for script in scripts:
 print("\n" + "=" * 60)
 print("PIPELINE COMPLETE")
 print("=" * 60)
+
+########################################################
