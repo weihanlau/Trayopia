@@ -31,13 +31,13 @@ Additional methods for selecting the optimal view of each unit tray will be adde
 
 Before imaging, place [ArUco markers](https://fodi.github.io/arucosheetgen/) around the drawer as shown in the example below. The markers provide reference points that allow Trayopia to align the drawer across photographs.
 
-## ArUco marker layout
+### ArUco marker layout
 
 Place the ArUco markers around the drawer in the layout shown below. For drawers containing  more complex unit tray arrangements (e.g. many small unit trays), add two additional markers to the sides of the drawer, as shown in the image on the right.
 
 <p align="center">
-  <img src="images/ArUco_6.JPG" height="400">
-  <img src="images/ArUco_8.JPG" height="400">
+  <img src="images/ArUco_6.JPG" height="300">
+  <img src="images/ArUco_8.JPG" height="300">
 </p>
 
 Trayopia uses seven photographs per drawer. 
