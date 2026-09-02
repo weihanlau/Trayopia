@@ -31,9 +31,7 @@ for registered_dir in drawer_folders:
 
     detection_dir = detections_root / drawer_name
 
-    # ----------------------------------------------
-    # LOAD TRAYS + BEST VIEWS
-    # ----------------------------------------------
+    ###### LOAD BEST VIEWS OF EACH TRAY ######
 
     with open(
         detection_dir / "tray_coordinates.json",
@@ -51,9 +49,7 @@ for registered_dir in drawer_folders:
     print(f"Loaded {len(best_views)} best-view choices")
 
 
-    # ----------------------------------------------
-    # REFERENCE IMAGE
-    # ----------------------------------------------
+    ###### REFERENCE IMAGE ######
 
     reference_path = (
         registered_dir /
@@ -72,9 +68,7 @@ for registered_dir in drawer_folders:
     composite = reference_image.copy()
 
 
-    # ----------------------------------------------
-    # REPLACE EACH TRAY
-    # ----------------------------------------------
+    ###### REPLACE EACH UNIT TRAY WITH THEIR BEST VIEW ######
 
     for tray, choice in zip(
         trays,
@@ -110,9 +104,7 @@ for registered_dir in drawer_folders:
         )
 
 
-    # ----------------------------------------------
-    # SAVE COMPOSITE
-    # ----------------------------------------------
+    ###### SAVE COMPOSITE IMAGE ######
 
     output_path = (
         composites_root /
@@ -130,3 +122,5 @@ for registered_dir in drawer_folders:
 
 
 print("\nAll drawers finished.")
+
+########################################################
