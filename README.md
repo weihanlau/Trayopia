@@ -2,7 +2,7 @@
 
 Trayopia is a simple tool for combining multiple images of entomological drawers into a composite that provides unobscured views of specimens and labels within individual unit trays.
 
-Whole-drawer imaging plays an increasing role as a starting point for digitizing large entomological collections, but producing a single image that clearly captures every specimen and label can be challenging without specialized imaging equipment (e.g. robotic imaging rigs, telecentric optical systems, etc.). One major problem that is often encounted in whole-drawer imaging is that entomological unit trays can obscure specimens and labels when drawers are photographed directly from above, particularly when objects sit close to the walls of a tray.
+Whole-drawer imaging plays an increasing role as a starting point for digitizing large entomological collections, but producing a single image that clearly captures every specimen and label can be challenging without specialized imaging equipment (e.g. robotic imaging rigs, telecentric optical systems, etc.). One major problem that is often encounted in whole-drawer imaging is that entomological unit trays can obscure specimens and labels when drawers are photographed directly from above, particularly when objects sit close to the walls of a tray. This is fundamentally a line-of-sight problem that cannot be fully resolved by adjusting the imaging setup. No single viewpoint provides an unobstructed view into every unit tray in a drawer.
 
 Trayopia addresses this problem by combining information from multiple photographs of the same drawer taken from different positions. The position of the drawer relative to the camera is changed between photographs, providing different views into each unit tray and revealing contents that may be obscured in other images.
 
@@ -23,7 +23,7 @@ Trayopia processes multiple photographs of the same drawer through four main ste
 
 ## How Trayopia assigns "best views"
 
-Currently, Trayopia uses a tiered approach to select the best view of each unit tray that will make thier way into the final composite imgae. Trayopia favours views in which the tray is closest to the centre of the camera (based on homography distance), while using the unit tray label area to override this choice when a unit tray's label is substantially more visible in another image. Unit trays closer to the camera centre are generally viewed more directly from above, while a larger detected label area provides an additional indication that the contents of the unit tray are less obscured by the unit tray walls.
+Currently, Trayopia uses a tiered approach to select the best view of each unit tray that will make thier way into the final composite imgae. Trayopia first selects the view in which the unit tray is closest to the centre of the camera (based on homography distance), which generally provides a direct view into the unit tray. It then considers label visibility and overrides this first distance-based selection if the label in the unit tray is substantially more visible in another image. Label visibility is estimated from the detected area of the unit tray label, with a larger area indicating a less obstructed view of the tray.
 
 Additional methods for selecting the optimal view of each unit tray will be added in future versions of Trayopia.
 
@@ -95,7 +95,7 @@ Trayopia/
 
 ### Roboflow model
 
-Trayopia uses a pretrained Roboflow model to detect unit trays and unit-tray labels. The most up-to-date Trayopia model can be found here: https://universe.roboflow.com/aiworkstation-nature-ca 
+Trayopia uses a pretrained Roboflow model to detect unit trays and unit tray labels. The most up-to-date Trayopia model can be found here: https://universe.roboflow.com/aiworkstation-nature-ca 
 
 The default model used by Trayopia is:
 
