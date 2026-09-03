@@ -28,7 +28,7 @@ Trayopia requires only a basic imaging setup and a computer capable of running P
 - A digital camera
 - A copy stand or similar setup that holds the camera above the drawer
 - Printed [ArUco markers](https://fodi.github.io/arucosheetgen/)
-- A computer with Python 3.12 installed
+- A computer with Python installed
 - A Roboflow account and API key
 
 No specialized whole-drawer imaging equipment is required.
