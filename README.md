@@ -31,8 +31,6 @@ Trayopia requires only a basic imaging setup and a computer capable of running P
 - A computer with Python installed
 - A Roboflow account and API key
 
-No specialized whole-drawer imaging equipment is required.
-
 ## How Trayopia assigns "best views"
 
 Currently, Trayopia uses a tiered approach to select the best view of each unit tray that will make thier way into the final composite imgae. Trayopia first selects the view in which the unit tray is closest to the centre of the camera (based on homography distance), which generally provides a direct view into the unit tray. It then considers label visibility and overrides this first distance-based selection if the label in the unit tray is substantially more visible in another image. Label visibility is estimated from the detected area of the unit tray label, with a larger area indicating a less obstructed view of the tray.
