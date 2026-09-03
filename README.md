@@ -21,6 +21,18 @@ Trayopia processes multiple photographs of the same drawer through four main ste
 3. **View selection:** For each unit tray, Trayopia selects a view from one of the images supplied based on the unit tray's position relative to the camera and the visibility of the unit tray's label.
 4. **Compositing:** The selected unit tray images are assembled into a single composite image that preserves the appearance of the original whole-drawer image.
 
+## Equipment and requirements
+
+Trayopia requires only a basic imaging setup and a computer capable of running Python. You will need:
+
+- A digital camera
+- A copy stand or similar setup that holds the camera above the drawer
+- Printed [ArUco markers](https://fodi.github.io/arucosheetgen/)
+- A computer with Python 3.12 installed
+- A Roboflow account and API key
+
+No specialized whole-drawer imaging equipment is required.
+
 ## How Trayopia assigns "best views"
 
 Currently, Trayopia uses a tiered approach to select the best view of each unit tray that will make thier way into the final composite imgae. Trayopia first selects the view in which the unit tray is closest to the centre of the camera (based on homography distance), which generally provides a direct view into the unit tray. It then considers label visibility and overrides this first distance-based selection if the label in the unit tray is substantially more visible in another image. Label visibility is estimated from the detected area of the unit tray label, with a larger area indicating a less obstructed view of the tray.
