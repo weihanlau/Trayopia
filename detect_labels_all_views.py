@@ -5,6 +5,11 @@ from inference_sdk import InferenceHTTPClient, InferenceConfiguration
 
 ############################ SETTINGS ############################
 
+# Choose inference method:
+# "roboflow" = Roboflow hosted inference
+# "local"    = local Roboflow Inference server
+DEPLOYMENT = "local"
+
 registered_root = Path("registered")
 detections_root = Path("detections")
 
@@ -21,14 +26,37 @@ if not roboflow_api_key:
 
 ############################ ROBOFLOW ENDPOINT ############################
 
-client = InferenceHTTPClient(
-    api_url="https://serverless.roboflow.com",
-    api_key=roboflow_api_key
-).configure(
-    InferenceConfiguration(
-        api_key_transport="header"
+if DEPLOYMENT == "roboflow":
+
+    print("Inference mode: ROBOFLOW HOSTED")
+
+    client = InferenceHTTPClient(
+        api_url="https://serverless.roboflow.com",
+        api_key=roboflow_api_key
+    ).configure(
+        InferenceConfiguration(
+            api_key_transport="header"
+        )
     )
-)
+
+elif DEPLOYMENT == "local":
+
+    print("Inference mode: LOCAL")
+
+    client = InferenceHTTPClient(
+        api_url="http://localhost:9001",
+        api_key=roboflow_api_key
+    ).configure(
+        InferenceConfiguration(
+            api_key_transport="header"
+        )
+    )
+
+else:
+
+    raise ValueError(
+        'DEPLOYMENT must be either "roboflow" or "local"'
+    )
 
 
 ############################ FIND DRAWERS ############################

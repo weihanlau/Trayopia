@@ -43,10 +43,9 @@ Before imaging, place [ArUco markers](https://fodi.github.io/arucosheetgen/) aro
 
 #### ArUco marker layout
 
-Place the ArUco markers around the drawer in the layout shown below. For drawers containing  more complex unit tray arrangements (e.g. many small unit trays), add two additional markers to the sides of the drawer, as shown in the image on the right.
+Place 8 ArUco markers around the drawer in the layout shown below. 
 
 <p align="center">
-  <img src="images/ArUco_6.JPG" height="300">
   <img src="images/ArUco_8.JPG" height="300">
 </p>
 
@@ -54,7 +53,7 @@ Place the ArUco markers around the drawer in the layout shown below. For drawers
 
 Trayopia uses seven photographs per drawer. 
 
-1. **Reference:** Centre the drawer beneath the camera so that all ArUco markers are visible. This image defines the layout of the final composite.
+1. **Reference:** Centre the drawer beneath the camera so that all ArUco markers are visible. This image defines the layout of the final composite. **IMPORTANT**: Make sure that *all* 8 ArUco markers are visible in the reference image, but not in subsequent images.
 2. **Top left**
 3. **Top centre**
 4. **Top right**
@@ -62,7 +61,7 @@ Trayopia uses seven photographs per drawer.
 6. **Bottom centre**
 7. **Bottom right**
 
-For each additional photograph, reposition the drawer relative to the camera so that different parts of the drawer are brought closer to the centre of the image. Keep the drawer flat and ensure that three ArUco markers remain visible in each photograph.
+For each additional photograph, reposition the drawer relative to the camera so that different parts of the drawer are brought closer to the centre of the image. Keep the drawer flat and ensure that at least three ArUco markers remain visible in each photograph. 
 
 ## Installation
 

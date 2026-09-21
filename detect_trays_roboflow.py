@@ -6,6 +6,11 @@ from inference_sdk import InferenceHTTPClient, InferenceConfiguration
 
 ############################ SETTINGS ############################
 
+# Choose inference method:
+# "roboflow" = Roboflow hosted inference
+# "local"    = local Roboflow Inference server
+DEPLOYMENT = "local"
+
 registered_root = Path("registered")
 
 detections_root = Path("detections")
@@ -23,14 +28,37 @@ if not roboflow_api_key:
 
 ############################ ROBOFLOW ENDPOINT ############################
 
-client = InferenceHTTPClient(
-    api_url="https://serverless.roboflow.com",
-    api_key=roboflow_api_key
-).configure(
-    InferenceConfiguration(
-        api_key_transport="header"
+if DEPLOYMENT == "roboflow":
+
+    print("Inference mode: ROBOFLOW HOSTED")
+
+    client = InferenceHTTPClient(
+        api_url="https://serverless.roboflow.com",
+        api_key=roboflow_api_key
+    ).configure(
+        InferenceConfiguration(
+            api_key_transport="header"
+        )
     )
-)
+
+elif DEPLOYMENT == "local":
+
+    print("Inference mode: LOCAL")
+
+    client = InferenceHTTPClient(
+        api_url="http://localhost:9001",
+        api_key=roboflow_api_key
+    ).configure(
+        InferenceConfiguration(
+            api_key_transport="header"
+        )
+    )
+
+else:
+
+    raise ValueError(
+        'DEPLOYMENT must be either "roboflow" or "local"'
+    )
 
 ############################ FIND ALL DRAWERS ############################
 
@@ -118,10 +146,11 @@ for registered_folder in drawer_folders:
     )
 
 
-    ###### DRAW TRAY BOXES ######
+    ###### DRAW TRAY + LABEL BOXES ######
 
     output = image.copy()
 
+    # Draw tray boxes
     for p in tray_predictions:
 
         x = p["x"]
@@ -140,6 +169,27 @@ for registered_folder in drawer_folders:
             (x2, y2),
             (0, 255, 0),
             4
+        )
+
+    # Draw label boxes
+    for p in label_predictions:
+
+        x = p["x"]
+        y = p["y"]
+        w = p["width"]
+        h = p["height"]
+
+        x1 = int(x - w / 2)
+        y1 = int(y - h / 2)
+        x2 = int(x + w / 2)
+        y2 = int(y + h / 2)
+
+        cv2.rectangle(
+            output,
+            (x1, y1),
+            (x2, y2),
+            (255, 0, 0),
+            3
         )
 
     cv2.imwrite(
@@ -168,3 +218,5 @@ for registered_folder in drawer_folders:
 
 
 print("\nAll drawers finished.")
+
+########################################################
