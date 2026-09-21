@@ -129,9 +129,7 @@ roboflow:
 
 ## Input and Running Trayopia
 
-Trayopia requires seven images (or more) per drawer, captured in the order described in the [Image capture protocol](#image-capture-protocol). Image filenames do not matter, but **the order of the images does**.
-
-Place the images in a single folder. When the pipeline is run, you will be prompted to provide the path to this folder.
+Trayopia requires seven images (or more) per drawer, captured in the order described in the [Image capture protocol](#image-capture-protocol). Image filenames do not matter, but **the order of the images does**. Place the images in a single folder. When the pipeline is run, you will be prompted to provide the path to this folder.
 
 To run Trayopia, activate your Python environment and run:
 
