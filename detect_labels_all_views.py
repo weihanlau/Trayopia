@@ -5,11 +5,6 @@ from inference_sdk import InferenceHTTPClient, InferenceConfiguration
 
 ############################ SETTINGS ############################
 
-# Choose inference method:
-# "roboflow" = Roboflow hosted inference
-# "local"    = local Roboflow Inference server
-DEPLOYMENT = "local"
-
 registered_root = Path("registered")
 detections_root = Path("detections")
 
@@ -18,6 +13,8 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
+
+DEPLOYMENT = os.getenv("TRAYOPIA_DEPLOYMENT", "roboflow")
 
 roboflow_api_key = os.getenv("ROBOFLOW_API_KEY")
 

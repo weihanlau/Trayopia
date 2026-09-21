@@ -127,7 +127,7 @@ roboflow:
 
 ## Input and Running Trayopia
 
-Trayopia requires seven images per drawer, captured in the order described in the [Image capture protocol](#image-capture-protocol). Image filenames do not matter, but **the order of the images does**.
+Trayopia requires seven images (or more) per drawer, captured in the order described in the [Image capture protocol](#image-capture-protocol). Image filenames do not matter, but **the order of the images does**.
 
 Place the images in a single folder. When the pipeline is run, you will be prompted to provide the path to this folder.
 
@@ -135,6 +135,22 @@ To run Trayopia, activate your Python environment and run:
 
 ```bash
 python run_pipeline.py
+```
+#### Inference options
+
+Trayopia can run the Roboflow object-detection models locally on your computer rather than using Roboflow's hosted inference service (which doesn't require Roboflow deplpoyment credits!). Local inference uses Roboflow Inference, which runs inside Docker.
+
+Local inference requires [Docker Desktop](https://www.docker.com/products/docker-desktop/). Install Docker Desktop and make sure it is running before starting Trayopia. Docker Desktop can also be configured to start automatically when you log in.
+
+For local inference, In `run_pipeline.py`, set:
+
+```python
+DEPLOYMENT = "local"
+```
+If you want to run the models on Roboflow's servers instead, set:
+
+```pythons
+DEPLOYMENT = "roboflow"
 ```
 
 ## Output
