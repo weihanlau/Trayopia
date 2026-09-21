@@ -4,6 +4,7 @@ import sys
 import time
 import urllib.request
 
+start_time = time.time()
 
 ############################ SETTINGS ############################
 
@@ -110,8 +111,14 @@ for script in scripts:
         sys.exit(result.returncode)
 
 
+elapsed_time = time.time() - start_time
+
+minutes = int(elapsed_time // 60)
+seconds = int(elapsed_time % 60)
+
 print("\n" + "=" * 60)
 print("PIPELINE COMPLETE")
+print(f"Total time: {minutes}m {seconds}s")
 print("=" * 60)
 
 ########################################################
