@@ -51,7 +51,7 @@ Place 8 ArUco markers around the drawer in the layout shown below.
 
 #### Photograph positions
 
-Trayopia uses seven photographs per drawer. 
+Trayopia uses seven photographs per drawer*. 
 
 1. **Reference:** Centre the drawer beneath the camera so that all ArUco markers are visible. This image defines the layout of the final composite. **IMPORTANT**: Make sure that *all* 8 ArUco markers are visible in the reference image, but not in subsequent images.
 2. **Top left**
@@ -62,6 +62,8 @@ Trayopia uses seven photographs per drawer.
 7. **Bottom right**
 
 For each additional photograph, reposition the drawer relative to the camera so that different parts of the drawer are brought closer to the centre of the image. Keep the drawer flat and ensure that at least three ArUco markers remain visible in each photograph. 
+
+<small>*We have also found that nine images can produce better composites, with the two additional images capturing the middle-left and middle-right portions of the drawer.</small>
 
 ## Installation
 
@@ -149,7 +151,7 @@ DEPLOYMENT = "local"
 ```
 If you want to run the models on Roboflow's servers instead, set:
 
-```pythons
+```python
 DEPLOYMENT = "roboflow"
 ```
 
