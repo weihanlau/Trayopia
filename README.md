@@ -117,14 +117,12 @@ Trayopia/
 
 #### Roboflow model
 
-Trayopia uses a pretrained Roboflow model to detect unit trays and unit tray labels. The most up-to-date Trayopia model can be found here: https://universe.roboflow.com/aiworkstation-nature-ca 
+Trayopia uses pretrained Roboflow models to detect unit trays and unit tray labels. The most up-to-date Trayopia models can be found here: https://universe.roboflow.com/aiworkstation-nature-ca
 
-The default model used by Trayopia is:
+The Roboflow models are specified directly in detect_trays.py and detect_labels_all_views.py. To use the latest model, open each script and update the model name and version under the sub-header:
 
-```yaml
-roboflow:
-  workspace: "aiworkstation-nature-ca"
-  model: "entomology-unit-trays"
+```python
+###### ROBOFLOW INFERENCE ######
 ```
 
 ## Input and Running Trayopia

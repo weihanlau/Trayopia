@@ -86,6 +86,8 @@ for registered_dir in drawer_folders:
 
         print(f"Processing {path.name}...")
 
+        ###### ROBOFLOW INFERENCE ######
+
         result = client.infer(
             str(path),
             model_id="entomology-unit-trays/3"
