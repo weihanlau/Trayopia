@@ -114,7 +114,7 @@ for registered_folder in drawer_folders:
 
     result = client.infer(
         str(image_path),
-        model_id="entomology-unit-trays/3"
+        model_id="entomology-unit-trays/8"
     )
 
 
@@ -148,7 +148,7 @@ for registered_folder in drawer_folders:
     output = image.copy()
 
     # Draw tray boxes
-    for p in tray_predictions:
+    for tray_number, p in enumerate(tray_predictions, start=1):
 
         x = p["x"]
         y = p["y"]
@@ -166,6 +166,17 @@ for registered_folder in drawer_folders:
             (x2, y2),
             (0, 255, 0),
             4
+        )
+
+        cv2.putText(
+            output,
+            str(tray_number),
+            (x1 + 10, y1 + 35),
+            cv2.FONT_HERSHEY_SIMPLEX,
+            1.2,
+            (0, 0, 255),
+            3,
+            cv2.LINE_AA
         )
 
     # Draw label boxes

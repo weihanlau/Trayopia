@@ -150,6 +150,21 @@ If you want to run the models on Roboflow's servers instead, set:
 ```python
 DEPLOYMENT = "roboflow"
 ```
+#### Using Multiple Image Scales
+
+Trayopia also supports taking zoomed-in images after the first reference image. This may be important for you if you require the final composite image to capture finer detail. In this case, the first iamge should show the entire drawer and all ArUco markers. Images 2 onward can then be taken closer to different parts of the drawer to provide higher-resolution views of the unit trays, specimens, and labels.
+
+When using zoomed images, set the following in run_pipeline.py:
+
+```python
+DISTANCE_MODE = "normalized"
+```
+
+If you are not using closer images and all images are taken at approximately the same distance and scale, use:
+
+```python
+DISTANCE_MODE = "standard"
+```
 
 ## Output
 

@@ -90,7 +90,7 @@ for registered_dir in drawer_folders:
 
         result = client.infer(
             str(path),
-            model_id="entomology-unit-trays/3"
+            model_id="entomology-unit-trays/8"
         )
 
         predictions = result["predictions"]

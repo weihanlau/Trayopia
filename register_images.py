@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import json
 from pathlib import Path
 
 
@@ -14,6 +15,9 @@ reference_name = "image_01.JPG"
 registered_root.mkdir(exist_ok=True)
 homography_root.mkdir(exist_ok=True)
 
+MARKER_ERROR_THRESHOLD = 10.0
+MIN_GOOD_MARKERS = 4
+
 
 ############################ ARUCO ############################
 
@@ -22,10 +26,13 @@ dictionary = cv2.aruco.getPredefinedDictionary(
 )
 
 parameters = cv2.aruco.DetectorParameters()
+
+parameters.cornerRefinementMethod = cv2.aruco.CORNER_REFINE_SUBPIX
+
 detector = cv2.aruco.ArucoDetector(dictionary, parameters)
 
 
-############################ FUNCTION: detect markers ############################
+############################ FUNCTION: detect_markers and marker_size ############################
 
 def detect_markers(image):
 
@@ -44,6 +51,17 @@ def detect_markers(image):
 
     return marker_dict
 
+def marker_size(corners):
+    """Average side length of an ArUco marker in pixels."""
+
+    side_lengths = [
+        np.linalg.norm(corners[0] - corners[1]),
+        np.linalg.norm(corners[1] - corners[2]),
+        np.linalg.norm(corners[2] - corners[3]),
+        np.linalg.norm(corners[3] - corners[0])
+    ]
+
+    return np.mean(side_lengths)
 
 ############################ PROCESS DRAWERS ############################
 
@@ -109,6 +127,10 @@ for image_folder in drawer_folders:
         if path.suffix.lower() in [".jpg", ".jpeg"]
     ])
 
+    image_scales = {
+        "image_01": 1.0
+    }
+
     ###### REGISTER EACH IMAGE ######
 
     for image_path in image_paths:
@@ -137,6 +159,34 @@ for image_folder in drawer_folders:
         if len(shared_ids) < 1:
             print("  ERROR: No shared markers")
             continue
+
+        ###### ESTIMATE IMAGE SCALE FROM ARUCO MARKERS ######
+
+        scale_ratios = []
+
+        for marker_id in shared_ids:
+
+            reference_size = marker_size(
+                reference_markers[marker_id]
+            )
+
+            image_size = marker_size(
+                markers[marker_id]
+            )
+
+            if reference_size > 0:
+                scale_ratios.append(
+                    image_size / reference_size
+                )
+
+        image_scale = float(np.median(scale_ratios))
+
+        image_scales[image_path.stem] = image_scale
+
+        print(
+            f"  ArUco scale relative to reference: "
+            f"{image_scale:.3f}x"
+        )
 
         source_points = []
         destination_points = []
@@ -172,7 +222,7 @@ for image_folder in drawer_folders:
             source_points,
             destination_points,
             cv2.RANSAC,
-            5.0
+            3.0
         )
 
         if H is None:
@@ -182,11 +232,111 @@ for image_folder in drawer_folders:
             )
             continue
 
+        ###### MEASURE REGISTRATION ERROR ######
+
+        projected_points = cv2.perspectiveTransform(
+            source_points.reshape(-1, 1, 2),
+            H
+        ).reshape(-1, 2)
+
+        errors = np.linalg.norm(
+            projected_points - destination_points,
+            axis=1
+        )
+        
+        mean_error = np.mean(errors)
+        max_error = np.max(errors)
+
+        bad_markers = []
+
+        for i, marker_id in enumerate(shared_ids):
+
+            start = i * 4
+            end = start + 4
+
+            marker_error = np.mean(
+                errors[start:end]
+            )
+
+            if marker_error > MARKER_ERROR_THRESHOLD:
+                bad_markers.append(marker_id)
+
+        good_markers = [
+            marker_id
+            for marker_id in shared_ids
+            if marker_id not in bad_markers
+        ]
+
+        ###### RECALCULATE WITHOUT BAD MARKERS ######
+
+        if bad_markers and len(good_markers) >= MIN_GOOD_MARKERS:
+
+            print(
+                f"  Removing bad markers: {bad_markers}"
+            )
+
+            source_points = []
+            destination_points = []
+
+            for marker_id in good_markers:
+
+                source_points.extend(
+                    markers[marker_id]
+                )
+
+                destination_points.extend(
+                    reference_markers[marker_id]
+                )
+
+            source_points = np.array(
+                source_points,
+                dtype=np.float32
+            )
+
+            destination_points = np.array(
+                destination_points,
+                dtype=np.float32
+            )
+
+            H, mask = cv2.findHomography(
+                source_points,
+                destination_points,
+                cv2.RANSAC,
+                3.0
+            )
+
+            print(
+                f"  Recalculated using: {good_markers}"
+            )
+
+        elif bad_markers:
+
+            print(
+                f"  WARNING: Bad markers {bad_markers}, "
+                f"but only {len(good_markers)} good markers remain. "
+                f"Keeping original homography."
+            )
+
         np.save(
             homography_folder /
             f"{image_path.stem}_H.npy",
             H
         )
+
+        ###### ERROR FOR EACH MARKER ######
+
+        for i, marker_id in enumerate(shared_ids):
+
+            start = i * 4
+            end = start + 4
+
+            marker_errors = errors[start:end]
+
+            print(
+                f"  Marker {marker_id}: "
+                f"mean={np.mean(marker_errors):.2f}px, "
+                f"max={np.max(marker_errors):.2f}px"
+            )
 
         ###### WARP IMAGE ######
 
@@ -238,6 +388,26 @@ for image_folder in drawer_folders:
             f"{inliers}/{len(source_points)}"
         )
         print(f"  Saved: {output_name}")
+        
+        print(
+            f"  Mean marker error: "
+            f"{mean_error:.2f}px"
+        )
+        print(
+            f"  Max marker error: "
+            f"{max_error:.2f}px"
+        )
+    
+    scale_path = homography_folder / "image_scales.json"
+
+    with open(scale_path, "w") as f:
+        json.dump(
+            image_scales,
+            f,
+            indent=4
+        )
+
+    print(f"\nSaved image scales: {scale_path}")
 
 
 print("\nDone.")

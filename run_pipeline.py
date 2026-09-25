@@ -11,7 +11,12 @@ start_time = time.time()
 # Choose inference method:
 # "roboflow" = Roboflow hosted inference
 # "local"    = local Roboflow Inference server
-DEPLOYMENT = "local"
+DEPLOYMENT = "roboflow"
+
+# Choose best-view distance method:
+# "normalized" = correct for different zoom levels
+# "standard"   = use pixel distance when images are at the same zoom
+DISTANCE_MODE = "normalized"
 
 ############################ PASS SETTINGS TO SCRIPTS ############################
 
@@ -20,8 +25,14 @@ if DEPLOYMENT not in ("roboflow", "local"):
         'DEPLOYMENT must be either "roboflow" or "local"'
     )
 
+if DISTANCE_MODE not in ("standard", "normalized"):
+    raise ValueError(
+        'DISTANCE_MODE must be either "standard" or "normalized"'
+    )
+
 env = os.environ.copy()
 env["TRAYOPIA_DEPLOYMENT"] = DEPLOYMENT
+env["TRAYOPIA_DISTANCE_MODE"] = DISTANCE_MODE
 
 ############################ FOR LOCAL INFERENCE ############################
 

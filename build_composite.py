@@ -3,8 +3,9 @@ import cv2
 from pathlib import Path
 
 
-############################ ROOT FOLDERS ############################
+############################ SETTINGS ############################
 
+drawers_root = Path("drawers")
 registered_root = Path("registered")
 detections_root = Path("detections")
 composites_root = Path("composites")
@@ -21,6 +22,7 @@ drawer_folders = sorted([
 
 print(f"Found {len(drawer_folders)} drawers.")
 
+
 for registered_dir in drawer_folders:
 
     drawer_name = registered_dir.name
@@ -30,8 +32,7 @@ for registered_dir in drawer_folders:
     print("=" * 50)
 
     detection_dir = detections_root / drawer_name
-
-    ###### LOAD BEST VIEWS OF EACH TRAY ######
+    original_dir = drawers_root / drawer_name
 
     with open(
         detection_dir / "tray_coordinates.json",
@@ -45,66 +46,67 @@ for registered_dir in drawer_folders:
     ) as f:
         best_views = json.load(f)
 
-    print(f"Loaded {len(trays)} trays")
-    print(f"Loaded {len(best_views)} best-view choices")
+    # Image 1 remains the background/reference
+    reference_path = original_dir / "image_01.JPG"
+    reference = cv2.imread(str(reference_path))
 
-
-    ###### REFERENCE IMAGE ######
-
-    reference_path = (
-        registered_dir /
-        "image_01_registered.JPG"
-    )
-
-    reference_image = cv2.imread(
-        str(reference_path)
-    )
-
-    if reference_image is None:
+    if reference is None:
         raise FileNotFoundError(
             f"Could not load {reference_path}"
         )
 
-    composite = reference_image.copy()
+    composite = reference.copy()
+
+    height, width = reference.shape[:2]
 
 
-    ###### REPLACE EACH UNIT TRAY WITH THEIR BEST VIEW ######
+    ############################ EACH TRAY ############################
 
-    for tray, choice in zip(
-        trays,
-        best_views
-    ):
+    for tray, choice in zip(trays, best_views):
+
+        tray_number = choice["tray"]
 
         x = tray["x"]
         y = tray["y"]
         w = tray["width"]
         h = tray["height"]
 
-        x1 = int(x - w / 2)
-        y1 = int(y - h / 2)
-        x2 = int(x + w / 2)
-        y2 = int(y + h / 2)
+        x1 = max(0, int(x - w / 2))
+        y1 = max(0, int(y - h / 2))
+        x2 = min(width, int(x + w / 2))
+        y2 = min(height, int(y + h / 2))
 
-        best_image_path = (
+        registered_name = choice["best_image"]
+
+        registered_path = (
             registered_dir /
-            choice["best_image"]
+            registered_name
         )
 
-        best_image = cv2.imread(
-            str(best_image_path)
+        registered = cv2.imread(
+            str(registered_path)
         )
 
-        if best_image is None:
-            raise FileNotFoundError(
-                f"Could not load {best_image_path}"
+        if registered is None:
+            print(
+                f"Tray {tray_number}: "
+                f"could not load {registered_path}"
             )
+            continue
 
+        # Copy the tray directly from the
+        # already-registered image
         composite[y1:y2, x1:x2] = (
-            best_image[y1:y2, x1:x2]
+            registered[y1:y2, x1:x2]
+        )
+
+        print(
+            f"Tray {tray_number}: "
+            f"{registered_name}"
         )
 
 
-    ###### SAVE COMPOSITE IMAGE ######
+    ############################ SAVE ############################
 
     output_path = (
         composites_root /
@@ -116,11 +118,7 @@ for registered_dir in drawer_folders:
         composite
     )
 
-    print(
-        f"Saved {output_path}"
-    )
+    print(f"Saved {output_path}")
 
 
 print("\nAll drawers finished.")
-
-########################################################

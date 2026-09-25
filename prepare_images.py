@@ -72,8 +72,8 @@ for image_path in image_paths:
 
     print(f"{image_path.name}: detected {marker_count} ArUco markers")
 
-    # A reference image contains all 8 ArUco markers
-    is_reference = marker_count >= 8
+    # A reference image contains all 16 ArUco markers
+    is_reference = marker_count >= 61
 
     if is_reference:
 

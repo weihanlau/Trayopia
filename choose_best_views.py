@@ -1,3 +1,4 @@
+import os
 import json
 import cv2
 import numpy as np
@@ -6,7 +7,13 @@ from pathlib import Path
 
 ############################ SETTINGS ############################
 
+DISTANCE_MODE = os.getenv(
+    "TRAYOPIA_DISTANCE_MODE",
+    "normalized"
+)
+
 LABEL_AREA_OVERRIDE = 0.2
+MAX_DISTANCE_OVERRIDE = 1.25
 
 
 ############################ ROOT FOLDERS ############################
@@ -47,10 +54,27 @@ for registered_dir in drawer_folders:
         "r"
     ) as f:
         labels_all_views = json.load(f)
+    
+    if DISTANCE_MODE == "normalized":
+        with open(
+            homography_dir / "image_scales.json",
+            "r"
+        ) as f:
+            image_scales = json.load(f)
+    else:
+        image_scales = {}
 
     image_paths = sorted(
         registered_dir.glob("image_*_registered.JPG")
     )
+
+    # In normalized mode, image 1 is the overview/reference image.
+    # Use only the zoomed-in images for best-view selection.
+    if DISTANCE_MODE == "normalized":
+        image_paths = [
+            path for path in image_paths
+            if path.name != "image_01_registered.JPG"
+        ]
 
     print(f"Loaded {len(trays)} trays")
     print(f"Found {len(image_paths)} registered images")
@@ -59,7 +83,7 @@ for registered_dir in drawer_folders:
     ###### CAMERA CENTRE ######
 
     reference_image = cv2.imread(
-        str(image_paths[0])
+    str(registered_dir / "image_01_registered.JPG")
     )
 
     height, width = reference_image.shape[:2]
@@ -98,6 +122,7 @@ for registered_dir in drawer_folders:
 
         candidates = []
 
+
         ###### SCORE EACH IMAGE ######
 
         for path in image_paths:
@@ -125,6 +150,13 @@ for registered_dir in drawer_folders:
                 tray_original - camera_centre
             )
 
+            if DISTANCE_MODE == "normalized":
+                image_scale = image_scales[base_name]
+                normalized_distance = distance / image_scale
+            else:
+                image_scale = 1.0
+                normalized_distance = distance
+
             labels = labels_all_views.get(
                 image_name,
                 []
@@ -151,9 +183,27 @@ for registered_dir in drawer_folders:
                         p["width"] * p["height"]
                 )
 
-                label_area = (
-                    largest_label["width"]
-                    * largest_label["height"]
+                lx = largest_label["x"]
+                ly = largest_label["y"]
+                lw = largest_label["width"]
+                lh = largest_label["height"]
+
+                label_corners_registered = np.array([[
+                    [lx - lw / 2, ly - lh / 2],
+                    [lx + lw / 2, ly - lh / 2],
+                    [lx + lw / 2, ly + lh / 2],
+                    [lx - lw / 2, ly + lh / 2]
+                ]], dtype=np.float32)
+
+                # Transform label back into the ORIGINAL image
+                label_corners_original = cv2.perspectiveTransform(
+                    label_corners_registered,
+                    H_inverse
+                )[0]
+
+                # Calculate its actual area in the original photograph
+                label_area = cv2.contourArea(
+                    label_corners_original
                 )
 
             else:
@@ -162,34 +212,63 @@ for registered_dir in drawer_folders:
             candidates.append({
                 "image": image_name,
                 "distance": float(distance),
+                "normalized_distance": float(normalized_distance),
+                "scale": float(image_scale),
                 "label_area": float(label_area)
             })
 
 
+        ###### DEBUG: SHOW ALL DISTANCES ######
+
+        print(f"\nTray {tray_number} candidate distances:")
+
+        for candidate in candidates:
+            print(
+                f"  {candidate['image']}: "
+                f"raw={candidate['distance']:.0f}px, "
+                f"scale={candidate['scale']:.3f}x, "
+                f"normalized={candidate['normalized_distance']:.0f}px"
+            )
+
+
         ###### FIRST PASS: CLOSEST TO CAMERA ######
 
-        distance_winner = min(
-            candidates,
-            key=lambda c: c["distance"]
-        )
+        if DISTANCE_MODE == "normalized":
+            distance_winner = min(
+                candidates,
+                key=lambda c: c["normalized_distance"]
+            )
+        else:
+            distance_winner = min(
+                candidates,
+                key=lambda c: c["distance"]
+            )
 
         chosen = distance_winner
 
 
         ###### SECOND PASS: LABEL AREA OVERRIDE ######
 
+        # Only consider images reasonably close to the distance winner
+        distance_key = (
+            "normalized_distance"
+            if DISTANCE_MODE == "normalized"
+            else "distance"
+        )
+
+        eligible_candidates = [
+            c for c in candidates
+            if c[distance_key]
+            <= distance_winner[distance_key] * MAX_DISTANCE_OVERRIDE
+        ]
+
         largest_label_candidate = max(
-            candidates,
+            eligible_candidates,
             key=lambda c: c["label_area"]
         )
 
-        current_area = (
-            distance_winner["label_area"]
-        )
-
-        largest_area = (
-            largest_label_candidate["label_area"]
-        )
+        current_area = distance_winner["label_area"]
+        largest_area = largest_label_candidate["label_area"]
 
         if current_area > 0:
 
@@ -221,11 +300,18 @@ for registered_dir in drawer_folders:
             else "label override"
         )
 
+        if DISTANCE_MODE == "normalized":
+            chosen_distance = chosen["normalized_distance"]
+            distance_label = "normalized distance"
+        else:
+            chosen_distance = chosen["distance"]
+            distance_label = "distance"
+
         print(
             f"Tray {tray_number}: "
             f"{chosen['image']} "
             f"[{reason}] "
-            f"distance={chosen['distance']:.0f}px, "
+            f"{distance_label}={chosen_distance:.0f}px, "
             f"label={chosen['label_area']:.0f}px²"
         )
 
