@@ -2,6 +2,7 @@ import cv2
 import json
 from pathlib import Path
 from inference_sdk import InferenceHTTPClient, InferenceConfiguration
+from trayopia_logger import print
 
 
 ############################ SETTINGS ############################
@@ -100,8 +101,34 @@ for registered_folder in drawer_folders:
         "label_coordinates.json"
     )
 
+    trays_all_views_json = (
+    output_folder /
+    "trays_all_views.json"
+    )
+
 
     ###### LOAD IMAGE ######
+
+    registered_images = sorted(
+    registered_folder.glob("image_*_registered.JPG")
+    )
+
+    trays_all_views = {}
+
+    for registered_image in registered_images:
+
+        view_result = client.infer(
+            str(registered_image),
+            model_id="entomology-unit-trays/8"
+        )
+
+        view_trays = [
+            p for p in view_result["predictions"]
+            if p["class"] == "Unit-Tray"
+            and p["confidence"] >= 0.8
+        ]
+
+        trays_all_views[registered_image.name] = view_trays
 
     image = cv2.imread(str(image_path))
 
@@ -218,6 +245,13 @@ for registered_folder in drawer_folders:
     with open(label_json, "w") as f:
         json.dump(
             label_predictions,
+            f,
+            indent=4
+        )
+    
+    with open(trays_all_views_json, "w") as f:
+        json.dump(
+            trays_all_views,
             f,
             indent=4
         )

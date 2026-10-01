@@ -1,6 +1,7 @@
 from pathlib import Path
 import shutil
 import cv2
+from trayopia_logger import print
 
 
 ############################ SETTINGS ############################

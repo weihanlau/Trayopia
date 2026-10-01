@@ -3,6 +3,7 @@ import json
 import cv2
 import numpy as np
 from pathlib import Path
+from trayopia_logger import print
 
 
 ############################ SETTINGS ############################
@@ -12,8 +13,8 @@ DISTANCE_MODE = os.getenv(
     "normalized"
 )
 
-LABEL_AREA_OVERRIDE = 0.2
-MAX_DISTANCE_OVERRIDE = 1.25
+LABEL_AREA_OVERRIDE = 0.1
+MAX_DISTANCE_OVERRIDE = 1.1
 
 
 ############################ ROOT FOLDERS ############################
@@ -337,5 +338,6 @@ for registered_dir in drawer_folders:
 
 
 print("\nAll drawers finished.")
+
 
 ########################################################

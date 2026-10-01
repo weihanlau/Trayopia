@@ -26,22 +26,6 @@ if not composite_folder.exists():
     )
 
 
-############################ FIND COMPOSITES ############################
-
-composite_paths = sorted([
-    path for path in composite_folder.iterdir()
-    if (
-        path.suffix.lower() in [".jpg", ".jpeg"]
-        and path.stem.startswith("drawer_")
-        and path.stem.endswith("_composite")
-    )
-])
-
-print(
-    f"\nFound {len(composite_paths)} composite images."
-)
-
-
 ############################ READ CSV ############################
 
 with open(
@@ -53,8 +37,8 @@ with open(
     reader = csv.DictReader(csvfile)
 
     required_columns = {
-        "family",
-        "drawer_number"
+        "Drawer_ID",
+        "Drawer_Order"
     }
 
     if not required_columns.issubset(
@@ -62,50 +46,49 @@ with open(
     ):
         raise ValueError(
             "CSV must contain columns named "
-            "'family' and 'drawer_number'."
+            "'Drawer_ID' and 'Drawer_Order'."
         )
 
     rows = list(reader)
 
 
 print(
-    f"Found {len(rows)} rows in CSV."
+    f"\nFound {len(rows)} drawers in CSV."
 )
-
-
-############################ CHECK COUNTS ############################
-
-if len(composite_paths) != len(rows):
-
-    raise ValueError(
-        "\nNumber of composites does not match "
-        "number of CSV rows.\n"
-        f"Composites: {len(composite_paths)}\n"
-        f"CSV rows:   {len(rows)}\n\n"
-        "Nothing has been renamed."
-    )
 
 
 ############################ BUILD RENAME PLAN ############################
 
 rename_plan = []
 
-for composite_path, row in zip(
-    composite_paths,
-    rows
-):
+for row in rows:
 
-    family = row["family"].strip()
-    drawer_number = row["drawer_number"].strip()
+    drawer_id = row["Drawer_ID"].strip()
+    drawer_order_raw = row["Drawer_Order"].strip()
 
-    if not family or not drawer_number:
+    if not drawer_id or not drawer_order_raw:
         raise ValueError(
-            "CSV contains a blank family or "
-            "drawer_number."
+            "CSV contains a blank Drawer_ID or Drawer_Order."
         )
 
+    try:
+        drawer_order = int(drawer_order_raw)
+    except ValueError:
+        raise ValueError(
+            f"Invalid Drawer_Order: {drawer_order_raw}"
+        )
+
+    old_name = (
+        f"drawer_{drawer_order:03d}_composite.JPG"
+    )
+
+    old_path = (
+        composite_folder /
+        old_name
+    )
+
     new_name = (
-        f"{family}_{drawer_number}.JPG"
+        f"{drawer_id}.JPG"
     )
 
     new_path = (
@@ -113,9 +96,15 @@ for composite_path, row in zip(
         new_name
     )
 
+    if not old_path.exists():
+        raise FileNotFoundError(
+            f"Expected composite does not exist: "
+            f"{old_path}"
+        )
+
     rename_plan.append(
         (
-            composite_path,
+            old_path,
             new_path
         )
     )

@@ -13,10 +13,36 @@ start_time = time.time()
 # "local"    = local Roboflow Inference server
 DEPLOYMENT = "roboflow"
 
-# Choose best-view distance method:
-# "normalized" = correct for different zoom levels
-# "standard"   = use pixel distance when images are at the same zoom
+# Choose distance method:
+# "normalized" = corrections will be applied for different zoom levels
+# "standard"   = No corrections required. Use pixel distance when images are at the same zoomed-in level
 DISTANCE_MODE = "normalized"
+
+
+############################ LOGS ############################
+
+from datetime import datetime
+
+os.makedirs("logs", exist_ok=True)
+
+timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+
+log_path = os.path.abspath(
+    os.path.join(
+        "logs",
+        f"trayopia_{timestamp}.log"
+    )
+)
+
+with open(log_path, "w", encoding="utf-8") as log:
+    log.write("TRAYOPIA LOG\n")
+    log.write(f"Started: {datetime.now()}\n")
+    log.write(f"Deployment: {DEPLOYMENT}\n")
+    log.write(f"Distance mode: {DISTANCE_MODE}\n")
+    log.write("=" * 60 + "\n")
+
+print(f"Log file: {log_path}")
+
 
 ############################ PASS SETTINGS TO SCRIPTS ############################
 
@@ -33,6 +59,12 @@ if DISTANCE_MODE not in ("standard", "normalized"):
 env = os.environ.copy()
 env["TRAYOPIA_DEPLOYMENT"] = DEPLOYMENT
 env["TRAYOPIA_DISTANCE_MODE"] = DISTANCE_MODE
+env["TRAYOPIA_LOG_PATH"] = log_path
+
+os.environ["TRAYOPIA_LOG_PATH"] = log_path
+
+from trayopia_logger import print
+
 
 ############################ FOR LOCAL INFERENCE ############################
 
@@ -94,6 +126,7 @@ if DEPLOYMENT == "local":
                 "Local Roboflow Inference failed to start."
             )
 
+
 ############################ RUN TRAYOPIA ############################
 
 scripts = [
@@ -131,5 +164,6 @@ print("\n" + "=" * 60)
 print("PIPELINE COMPLETE")
 print(f"Total time: {minutes}m {seconds}s")
 print("=" * 60)
+
 
 ########################################################

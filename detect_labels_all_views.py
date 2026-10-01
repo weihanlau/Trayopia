@@ -1,6 +1,7 @@
 import json
 from pathlib import Path
 from inference_sdk import InferenceHTTPClient, InferenceConfiguration
+from trayopia_logger import print
 
 
 ############################ SETTINGS ############################

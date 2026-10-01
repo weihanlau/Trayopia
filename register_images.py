@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 import json
 from pathlib import Path
+from trayopia_logger import print
 
 
 ############################ SETTINGS ############################
