@@ -1,0 +1,839 @@
+TRAYOPIA LOG
+Started: 2026-10-07 15:46:22.748848
+Deployment: roboflow
+Distance mode: normalized
+============================================================
+
+============================================================
+RUNNING: prepare_images.py
+============================================================
+
+Found 11 images.
+
+Looking for reference images...
+DSC_0002.jpg: detected 29 ArUco markers
+Reference found: DSC_0002.jpg (29 markers detected)
+DSC_0003.jpg: detected 7 ArUco markers
+DSC_0004.jpg: detected 7 ArUco markers
+DSC_0005.jpg: detected 9 ArUco markers
+DSC_0006.jpg: detected 7 ArUco markers
+DSC_0007.jpg: detected 9 ArUco markers
+DSC_0008.jpg: detected 11 ArUco markers
+DSC_0009.jpg: detected 9 ArUco markers
+DSC_0010.jpg: detected 7 ArUco markers
+DSC_0011.jpg: detected 9 ArUco markers
+DSC_0012.jpg: detected 9 ArUco markers
+
+Detected 1 drawers.
+
+WARNING: drawer_001: 11 images
+Prepared drawer_001 (11 images)
+
+Done.
+
+============================================================
+RUNNING: register_images.py
+============================================================
+Found 1 drawers.
+
+==================================================
+Processing drawer_001
+==================================================
+Reference image: image_01.JPG
+Markers: [8, 10, 11, 12, 15, 16, 24, 25, 26, 27, 31, 32, 37, 38, 40, 41, 42, 45, 46, 47, 48, 54, 64, 68, 71, 72, 73, 74, 75]
+
+image_02.JPG
+  Shared markers: [16, 24, 26, 32, 37, 38, 40]
+  ArUco scale relative to reference: 2.008x
+  Using 28 corresponding points
+  Removing bad markers: [24, 26, 32]
+  Recalculated using: [16, 37, 38, 40]
+  Marker 16: mean=1.72px, max=3.16px
+  Marker 24: mean=29.87px, max=35.86px
+  Marker 26: mean=10.49px, max=13.86px
+  Marker 32: mean=17.97px, max=22.77px
+  Marker 37: mean=1.16px, max=1.96px
+  Marker 38: mean=4.41px, max=6.98px
+  Marker 40: mean=1.19px, max=1.97px
+  Homography calculated
+  RANSAC inliers: 12/16
+  Saved: image_02_registered.JPG
+  Mean marker error: 9.54px
+  Max marker error: 35.86px
+
+image_03.JPG
+  Shared markers: [42, 46, 48, 54, 73, 74, 75]
+  ArUco scale relative to reference: 2.076x
+  Using 28 corresponding points
+  Removing bad markers: [48, 73]
+  Recalculated using: [42, 46, 54, 74, 75]
+  Marker 42: mean=8.82px, max=10.90px
+  Marker 46: mean=1.08px, max=1.77px
+  Marker 48: mean=30.30px, max=35.75px
+  Marker 54: mean=1.73px, max=1.93px
+  Marker 73: mean=74.27px, max=83.64px
+  Marker 74: mean=1.11px, max=1.76px
+  Marker 75: mean=9.24px, max=11.91px
+  Homography calculated
+  RANSAC inliers: 12/20
+  Saved: image_03_registered.JPG
+  Mean marker error: 18.08px
+  Max marker error: 83.64px
+
+image_04.JPG
+  Shared markers: [16, 32, 37, 38, 40, 41, 45, 68, 72]
+  ArUco scale relative to reference: 2.053x
+  Using 36 corresponding points
+  Removing bad markers: [16]
+  Recalculated using: [32, 37, 38, 40, 41, 45, 68, 72]
+  Marker 16: mean=18.90px, max=22.97px
+  Marker 32: mean=1.49px, max=2.77px
+  Marker 37: mean=1.51px, max=2.69px
+  Marker 38: mean=1.40px, max=2.46px
+  Marker 40: mean=6.52px, max=9.01px
+  Marker 41: mean=3.46px, max=4.71px
+  Marker 45: mean=1.64px, max=3.31px
+  Marker 68: mean=2.83px, max=4.79px
+  Marker 72: mean=4.92px, max=8.98px
+  Homography calculated
+  RANSAC inliers: 24/32
+  Saved: image_04_registered.JPG
+  Mean marker error: 4.74px
+  Max marker error: 22.97px
+
+image_05.JPG
+  Shared markers: [16, 24, 26, 32, 37, 38, 40]
+  ArUco scale relative to reference: 2.010x
+  Using 28 corresponding points
+  Removing bad markers: [32, 37, 38]
+  Recalculated using: [16, 24, 26, 40]
+  Marker 16: mean=1.09px, max=1.47px
+  Marker 24: mean=2.72px, max=4.67px
+  Marker 26: mean=1.36px, max=1.97px
+  Marker 32: mean=64.33px, max=76.23px
+  Marker 37: mean=10.31px, max=14.95px
+  Marker 38: mean=29.26px, max=37.05px
+  Marker 40: mean=2.19px, max=4.20px
+  Homography calculated
+  RANSAC inliers: 12/16
+  Saved: image_05_registered.JPG
+  Mean marker error: 15.89px
+  Max marker error: 76.23px
+
+image_06.JPG
+  Shared markers: [8, 11, 12, 15, 16, 24, 26, 27, 40]
+  ArUco scale relative to reference: 2.031x
+  Using 36 corresponding points
+  Removing bad markers: [40]
+  Recalculated using: [8, 11, 12, 15, 16, 24, 26, 27]
+  Marker 8: mean=2.62px, max=3.28px
+  Marker 11: mean=1.34px, max=2.58px
+  Marker 12: mean=1.32px, max=2.39px
+  Marker 15: mean=2.71px, max=3.33px
+  Marker 16: mean=2.27px, max=4.58px
+  Marker 24: mean=1.60px, max=2.98px
+  Marker 26: mean=1.50px, max=2.46px
+  Marker 27: mean=1.53px, max=3.16px
+  Marker 40: mean=11.82px, max=16.52px
+  Homography calculated
+  RANSAC inliers: 28/32
+  Saved: image_06_registered.JPG
+  Mean marker error: 2.97px
+  Max marker error: 16.52px
+
+image_07.JPG
+  Shared markers: [8, 10, 11, 12, 15, 16, 24, 25, 26, 27, 31]
+  ArUco scale relative to reference: 2.036x
+  Using 44 corresponding points
+  Removing bad markers: [10, 25, 31]
+  Recalculated using: [8, 11, 12, 15, 16, 24, 26, 27]
+  Marker 8: mean=2.22px, max=3.97px
+  Marker 10: mean=23.14px, max=29.07px
+  Marker 11: mean=1.66px, max=3.36px
+  Marker 12: mean=8.57px, max=11.83px
+  Marker 15: mean=1.17px, max=2.12px
+  Marker 16: mean=7.05px, max=10.04px
+  Marker 24: mean=2.25px, max=3.47px
+  Marker 25: mean=104.81px, max=116.70px
+  Marker 26: mean=1.32px, max=2.22px
+  Marker 27: mean=1.75px, max=3.04px
+  Marker 31: mean=52.64px, max=61.62px
+  Homography calculated
+  RANSAC inliers: 21/32
+  Saved: image_07_registered.JPG
+  Mean marker error: 18.78px
+  Max marker error: 116.70px
+
+image_08.JPG
+  Shared markers: [10, 12, 25, 31, 42, 46, 54, 74, 75]
+  ArUco scale relative to reference: 2.054x
+  Using 36 corresponding points
+  Removing bad markers: [12, 75]
+  Recalculated using: [10, 25, 31, 42, 46, 54, 74]
+  Marker 10: mean=2.83px, max=4.93px
+  Marker 12: mean=10.41px, max=14.24px
+  Marker 25: mean=2.03px, max=3.75px
+  Marker 31: mean=1.71px, max=2.42px
+  Marker 42: mean=1.96px, max=3.34px
+  Marker 46: mean=4.89px, max=7.55px
+  Marker 54: mean=2.27px, max=4.27px
+  Marker 74: mean=2.39px, max=4.27px
+  Marker 75: mean=18.52px, max=23.46px
+  Homography calculated
+  RANSAC inliers: 19/28
+  Saved: image_08_registered.JPG
+  Mean marker error: 5.22px
+  Max marker error: 23.46px
+
+image_09.JPG
+  Shared markers: [42, 46, 48, 54, 73, 74, 75]
+  ArUco scale relative to reference: 2.073x
+  Using 28 corresponding points
+  Removing bad markers: [48, 73]
+  Recalculated using: [42, 46, 54, 74, 75]
+  Marker 42: mean=7.96px, max=9.92px
+  Marker 46: mean=0.92px, max=1.58px
+  Marker 48: mean=26.60px, max=31.70px
+  Marker 54: mean=1.44px, max=1.74px
+  Marker 73: mean=65.46px, max=73.06px
+  Marker 74: mean=0.95px, max=1.43px
+  Marker 75: mean=7.87px, max=10.41px
+  Homography calculated
+  RANSAC inliers: 12/20
+  Saved: image_09_registered.JPG
+  Mean marker error: 15.89px
+  Max marker error: 73.06px
+
+image_10.JPG
+  Shared markers: [46, 47, 48, 54, 64, 71, 72, 73, 75]
+  ArUco scale relative to reference: 2.084x
+  Using 36 corresponding points
+  Removing bad markers: [64]
+  Recalculated using: [46, 47, 48, 54, 71, 72, 73, 75]
+  Marker 46: mean=4.22px, max=7.68px
+  Marker 47: mean=1.68px, max=2.67px
+  Marker 48: mean=3.41px, max=6.77px
+  Marker 54: mean=7.84px, max=14.62px
+  Marker 64: mean=15.73px, max=21.52px
+  Marker 71: mean=2.31px, max=4.38px
+  Marker 72: mean=2.20px, max=4.08px
+  Marker 73: mean=4.76px, max=9.32px
+  Marker 75: mean=5.77px, max=9.01px
+  Homography calculated
+  RANSAC inliers: 18/32
+  Saved: image_10_registered.JPG
+  Mean marker error: 5.33px
+  Max marker error: 21.52px
+
+image_11.JPG
+  Shared markers: [32, 37, 38, 41, 45, 47, 68, 71, 72]
+  ArUco scale relative to reference: 2.050x
+  Using 36 corresponding points
+  Removing bad markers: [71]
+  Recalculated using: [32, 37, 38, 41, 45, 47, 68, 72]
+  Marker 32: mean=2.83px, max=5.07px
+  Marker 37: mean=0.82px, max=1.82px
+  Marker 38: mean=1.23px, max=1.83px
+  Marker 41: mean=1.61px, max=2.85px
+  Marker 45: mean=6.27px, max=9.83px
+  Marker 47: mean=9.58px, max=13.81px
+  Marker 68: mean=1.85px, max=3.49px
+  Marker 71: mean=30.31px, max=37.44px
+  Marker 72: mean=2.16px, max=4.30px
+  Homography calculated
+  RANSAC inliers: 22/32
+  Saved: image_11_registered.JPG
+  Mean marker error: 6.30px
+  Max marker error: 37.44px
+
+Saved image scales: homographies\drawer_001\image_scales.json
+
+Done.
+
+============================================================
+RUNNING: detect_trays.py
+============================================================
+Inference mode: ROBOFLOW HOSTED
+Found 1 drawers.
+
+==================================================
+Processing drawer_001
+==================================================
+Detected trays: 36
+Detected labels: 21
+Saved tray detections for drawer_001
+
+All drawers finished.
+
+============================================================
+RUNNING: detect_labels_all_views.py
+============================================================
+Inference mode: ROBOFLOW HOSTED
+Found 1 drawers.
+
+==================================================
+Processing drawer_001
+==================================================
+Processing image_01_registered.JPG...
+  Detected labels: 25
+Processing image_02_registered.JPG...
+  Detected labels: 21
+Processing image_03_registered.JPG...
+  Detected labels: 16
+Processing image_04_registered.JPG...
+  Detected labels: 14
+Processing image_05_registered.JPG...
+  Detected labels: 18
+Processing image_06_registered.JPG...
+  Detected labels: 12
+Processing image_07_registered.JPG...
+  Detected labels: 12
+Processing image_08_registered.JPG...
+  Detected labels: 6
+Processing image_09_registered.JPG...
+  Detected labels: 12
+Processing image_10_registered.JPG...
+  Detected labels: 16
+Processing image_11_registered.JPG...
+  Detected labels: 16
+Saved labels_all_views.json for drawer_001
+
+All drawers finished.
+
+============================================================
+RUNNING: choose_best_views.py
+============================================================
+Found 1 drawers.
+
+==================================================
+Processing drawer_001
+==================================================
+Loaded 36 trays
+Found 10 registered images
+
+Best view for each tray:
+
+Tray 1 candidate distances:
+  image_02_registered.JPG: raw=2385px, scale=2.008x, normalized=1188px
+  image_03_registered.JPG: raw=1509px, scale=2.076x, normalized=727px
+  image_04_registered.JPG: raw=3793px, scale=2.053x, normalized=1847px
+  image_05_registered.JPG: raw=2802px, scale=2.010x, normalized=1394px
+  image_06_registered.JPG: raw=2151px, scale=2.031x, normalized=1059px
+  image_07_registered.JPG: raw=1170px, scale=2.036x, normalized=575px
+  image_08_registered.JPG: raw=467px, scale=2.054x, normalized=228px
+  image_09_registered.JPG: raw=1804px, scale=2.073x, normalized=870px
+  image_10_registered.JPG: raw=2972px, scale=2.084x, normalized=1426px
+  image_11_registered.JPG: raw=3620px, scale=2.050x, normalized=1766px
+Tray 1: image_08_registered.JPG [distance] normalized distance=228px, label=0px²
+
+Tray 2 candidate distances:
+  image_02_registered.JPG: raw=1728px, scale=2.008x, normalized=861px
+  image_03_registered.JPG: raw=2062px, scale=2.076x, normalized=993px
+  image_04_registered.JPG: raw=3121px, scale=2.053x, normalized=1520px
+  image_05_registered.JPG: raw=1916px, scale=2.010x, normalized=953px
+  image_06_registered.JPG: raw=664px, scale=2.031x, normalized=327px
+  image_07_registered.JPG: raw=495px, scale=2.036x, normalized=243px
+  image_08_registered.JPG: raw=1873px, scale=2.054x, normalized=912px
+  image_09_registered.JPG: raw=2680px, scale=2.073x, normalized=1293px
+  image_10_registered.JPG: raw=3486px, scale=2.084x, normalized=1673px
+  image_11_registered.JPG: raw=3499px, scale=2.050x, normalized=1707px
+Tray 2: image_07_registered.JPG [distance] normalized distance=243px, label=43212px²
+
+Tray 3 candidate distances:
+  image_02_registered.JPG: raw=622px, scale=2.008x, normalized=310px
+  image_03_registered.JPG: raw=1956px, scale=2.076x, normalized=942px
+  image_04_registered.JPG: raw=1903px, scale=2.053x, normalized=927px
+  image_05_registered.JPG: raw=641px, scale=2.010x, normalized=319px
+  image_06_registered.JPG: raw=969px, scale=2.031x, normalized=477px
+  image_07_registered.JPG: raw=1210px, scale=2.036x, normalized=594px
+  image_08_registered.JPG: raw=2499px, scale=2.054x, normalized=1216px
+  image_09_registered.JPG: raw=2612px, scale=2.073x, normalized=1260px
+  image_10_registered.JPG: raw=2958px, scale=2.084x, normalized=1419px
+  image_11_registered.JPG: raw=2485px, scale=2.050x, normalized=1212px
+Tray 3: image_02_registered.JPG [distance] normalized distance=310px, label=40193px²
+
+Tray 4 candidate distances:
+  image_02_registered.JPG: raw=1406px, scale=2.008x, normalized=700px
+  image_03_registered.JPG: raw=929px, scale=2.076x, normalized=447px
+  image_04_registered.JPG: raw=2021px, scale=2.053x, normalized=984px
+  image_05_registered.JPG: raw=1760px, scale=2.010x, normalized=876px
+  image_06_registered.JPG: raw=2678px, scale=2.031x, normalized=1319px
+  image_07_registered.JPG: raw=2095px, scale=2.036x, normalized=1029px
+  image_08_registered.JPG: raw=2195px, scale=2.054x, normalized=1068px
+  image_09_registered.JPG: raw=1164px, scale=2.073x, normalized=561px
+  image_10_registered.JPG: raw=979px, scale=2.084x, normalized=470px
+  image_11_registered.JPG: raw=1349px, scale=2.050x, normalized=658px
+Tray 4: image_03_registered.JPG [distance] normalized distance=447px, label=0px²
+
+Tray 5 candidate distances:
+  image_02_registered.JPG: raw=1128px, scale=2.008x, normalized=562px
+  image_03_registered.JPG: raw=2799px, scale=2.076x, normalized=1348px
+  image_04_registered.JPG: raw=791px, scale=2.053x, normalized=385px
+  image_05_registered.JPG: raw=777px, scale=2.010x, normalized=386px
+  image_06_registered.JPG: raw=2237px, scale=2.031x, normalized=1102px
+  image_07_registered.JPG: raw=2633px, scale=2.036x, normalized=1293px
+  image_08_registered.JPG: raw=3729px, scale=2.054x, normalized=1815px
+  image_09_registered.JPG: raw=3361px, scale=2.073x, normalized=1622px
+  image_10_registered.JPG: raw=3208px, scale=2.084x, normalized=1539px
+  image_11_registered.JPG: raw=1984px, scale=2.050x, normalized=968px
+Tray 5: image_04_registered.JPG [distance] normalized distance=385px, label=36978px²
+
+Tray 6 candidate distances:
+  image_02_registered.JPG: raw=780px, scale=2.008x, normalized=389px
+  image_03_registered.JPG: raw=1435px, scale=2.076x, normalized=691px
+  image_04_registered.JPG: raw=1327px, scale=2.053x, normalized=646px
+  image_05_registered.JPG: raw=1097px, scale=2.010x, normalized=546px
+  image_06_registered.JPG: raw=2292px, scale=2.031x, normalized=1129px
+  image_07_registered.JPG: raw=2006px, scale=2.036x, normalized=985px
+  image_08_registered.JPG: raw=2580px, scale=2.054x, normalized=1256px
+  image_09_registered.JPG: raw=1876px, scale=2.073x, normalized=905px
+  image_10_registered.JPG: raw=1684px, scale=2.084x, normalized=808px
+  image_11_registered.JPG: raw=1164px, scale=2.050x, normalized=568px
+Tray 6: image_02_registered.JPG [distance] normalized distance=389px, label=36606px²
+
+Tray 7 candidate distances:
+  image_02_registered.JPG: raw=1198px, scale=2.008x, normalized=597px
+  image_03_registered.JPG: raw=718px, scale=2.076x, normalized=346px
+  image_04_registered.JPG: raw=2481px, scale=2.053x, normalized=1208px
+  image_05_registered.JPG: raw=1593px, scale=2.010x, normalized=792px
+  image_06_registered.JPG: raw=1702px, scale=2.031x, normalized=838px
+  image_07_registered.JPG: raw=935px, scale=2.036x, normalized=459px
+  image_08_registered.JPG: raw=1362px, scale=2.054x, normalized=663px
+  image_09_registered.JPG: raw=1359px, scale=2.073x, normalized=656px
+  image_10_registered.JPG: raw=2068px, scale=2.084x, normalized=992px
+  image_11_registered.JPG: raw=2362px, scale=2.050x, normalized=1152px
+Tray 7: image_03_registered.JPG [distance] normalized distance=346px, label=40927px²
+
+Tray 8 candidate distances:
+  image_02_registered.JPG: raw=1633px, scale=2.008x, normalized=813px
+  image_03_registered.JPG: raw=333px, scale=2.076x, normalized=161px
+  image_04_registered.JPG: raw=2836px, scale=2.053x, normalized=1381px
+  image_05_registered.JPG: raw=2047px, scale=2.010x, normalized=1018px
+  image_06_registered.JPG: raw=2144px, scale=2.031x, normalized=1056px
+  image_07_registered.JPG: raw=1239px, scale=2.036x, normalized=609px
+  image_08_registered.JPG: raw=1013px, scale=2.054x, normalized=493px
+  image_09_registered.JPG: raw=893px, scale=2.073x, normalized=431px
+  image_10_registered.JPG: raw=1854px, scale=2.084x, normalized=890px
+  image_11_registered.JPG: raw=2491px, scale=2.050x, normalized=1215px
+Tray 8: image_03_registered.JPG [distance] normalized distance=161px, label=40545px²
+
+Tray 9 candidate distances:
+  image_02_registered.JPG: raw=729px, scale=2.008x, normalized=363px
+  image_03_registered.JPG: raw=2335px, scale=2.076x, normalized=1125px
+  image_04_registered.JPG: raw=695px, scale=2.053x, normalized=339px
+  image_05_registered.JPG: raw=556px, scale=2.010x, normalized=276px
+  image_06_registered.JPG: raw=2135px, scale=2.031x, normalized=1052px
+  image_07_registered.JPG: raw=2328px, scale=2.036x, normalized=1143px
+  image_08_registered.JPG: raw=3316px, scale=2.054x, normalized=1614px
+  image_09_registered.JPG: raw=2870px, scale=2.073x, normalized=1385px
+  image_10_registered.JPG: raw=2699px, scale=2.084x, normalized=1295px
+  image_11_registered.JPG: raw=1596px, scale=2.050x, normalized=778px
+Tray 9: image_05_registered.JPG [distance] normalized distance=276px, label=37116px²
+
+Tray 10 candidate distances:
+  image_02_registered.JPG: raw=1280px, scale=2.008x, normalized=637px
+  image_03_registered.JPG: raw=2746px, scale=2.076x, normalized=1323px
+  image_04_registered.JPG: raw=2179px, scale=2.053x, normalized=1061px
+  image_05_registered.JPG: raw=1029px, scale=2.010x, normalized=512px
+  image_06_registered.JPG: raw=932px, scale=2.031x, normalized=459px
+  image_07_registered.JPG: raw=1736px, scale=2.036x, normalized=852px
+  image_08_registered.JPG: raw=3158px, scale=2.054x, normalized=1538px
+  image_09_registered.JPG: raw=3426px, scale=2.073x, normalized=1653px
+  image_10_registered.JPG: raw=3761px, scale=2.084x, normalized=1805px
+  image_11_registered.JPG: raw=3089px, scale=2.050x, normalized=1507px
+Tray 10: image_06_registered.JPG [distance] normalized distance=459px, label=0px²
+
+Tray 11 candidate distances:
+  image_02_registered.JPG: raw=811px, scale=2.008x, normalized=404px
+  image_03_registered.JPG: raw=1212px, scale=2.076x, normalized=584px
+  image_04_registered.JPG: raw=2181px, scale=2.053x, normalized=1062px
+  image_05_registered.JPG: raw=1151px, scale=2.010x, normalized=572px
+  image_06_registered.JPG: raw=1308px, scale=2.031x, normalized=644px
+  image_07_registered.JPG: raw=847px, scale=2.036x, normalized=416px
+  image_08_registered.JPG: raw=1798px, scale=2.054x, normalized=875px
+  image_09_registered.JPG: raw=1861px, scale=2.073x, normalized=898px
+  image_10_registered.JPG: raw=2383px, scale=2.084x, normalized=1144px
+  image_11_registered.JPG: raw=2333px, scale=2.050x, normalized=1138px
+Tray 11: image_07_registered.JPG [label override] normalized distance=416px, label=42119px²
+
+Tray 12 candidate distances:
+  image_02_registered.JPG: raw=2207px, scale=2.008x, normalized=1099px
+  image_03_registered.JPG: raw=3221px, scale=2.076x, normalized=1552px
+  image_04_registered.JPG: raw=3299px, scale=2.053x, normalized=1607px
+  image_05_registered.JPG: raw=2172px, scale=2.010x, normalized=1081px
+  image_06_registered.JPG: raw=856px, scale=2.031x, normalized=422px
+  image_07_registered.JPG: raw=1782px, scale=2.036x, normalized=875px
+  image_08_registered.JPG: raw=3176px, scale=2.054x, normalized=1546px
+  image_09_registered.JPG: raw=3906px, scale=2.073x, normalized=1885px
+  image_10_registered.JPG: raw=4515px, scale=2.084x, normalized=2166px
+  image_11_registered.JPG: raw=4129px, scale=2.050x, normalized=2014px
+Tray 12: image_06_registered.JPG [distance] normalized distance=422px, label=0px²
+
+Tray 13 candidate distances:
+  image_02_registered.JPG: raw=268px, scale=2.008x, normalized=134px
+  image_03_registered.JPG: raw=1767px, scale=2.076x, normalized=851px
+  image_04_registered.JPG: raw=1170px, scale=2.053x, normalized=570px
+  image_05_registered.JPG: raw=541px, scale=2.010x, normalized=269px
+  image_06_registered.JPG: raw=1868px, scale=2.031x, normalized=920px
+  image_07_registered.JPG: raw=1829px, scale=2.036x, normalized=898px
+  image_08_registered.JPG: raw=2728px, scale=2.054x, normalized=1328px
+  image_09_registered.JPG: raw=2318px, scale=2.073x, normalized=1118px
+  image_10_registered.JPG: raw=2288px, scale=2.084x, normalized=1098px
+  image_11_registered.JPG: raw=1572px, scale=2.050x, normalized=767px
+Tray 13: image_02_registered.JPG [distance] normalized distance=134px, label=0px²
+
+Tray 14 candidate distances:
+  image_02_registered.JPG: raw=2048px, scale=2.008x, normalized=1020px
+  image_03_registered.JPG: raw=2064px, scale=2.076x, normalized=994px
+  image_04_registered.JPG: raw=1774px, scale=2.053x, normalized=864px
+  image_05_registered.JPG: raw=2165px, scale=2.010x, normalized=1077px
+  image_06_registered.JPG: raw=3550px, scale=2.031x, normalized=1748px
+  image_07_registered.JPG: raw=3172px, scale=2.036x, normalized=1558px
+  image_08_registered.JPG: raw=3374px, scale=2.054x, normalized=1643px
+  image_09_registered.JPG: raw=2115px, scale=2.073x, normalized=1021px
+  image_10_registered.JPG: raw=1157px, scale=2.084x, normalized=555px
+  image_11_registered.JPG: raw=509px, scale=2.050x, normalized=248px
+Tray 14: image_11_registered.JPG [distance] normalized distance=248px, label=0px²
+
+Tray 15 candidate distances:
+  image_02_registered.JPG: raw=2079px, scale=2.008x, normalized=1036px
+  image_03_registered.JPG: raw=925px, scale=2.076x, normalized=445px
+  image_04_registered.JPG: raw=2744px, scale=2.053x, normalized=1336px
+  image_05_registered.JPG: raw=2425px, scale=2.010x, normalized=1207px
+  image_06_registered.JPG: raw=3180px, scale=2.031x, normalized=1566px
+  image_07_registered.JPG: raw=2403px, scale=2.036x, normalized=1180px
+  image_08_registered.JPG: raw=2032px, scale=2.054x, normalized=989px
+  image_09_registered.JPG: raw=645px, scale=2.073x, normalized=311px
+  image_10_registered.JPG: raw=602px, scale=2.084x, normalized=289px
+  image_11_registered.JPG: raw=1845px, scale=2.050x, normalized=900px
+Tray 15: image_09_registered.JPG [label override] normalized distance=311px, label=40319px²
+
+Tray 16 candidate distances:
+  image_02_registered.JPG: raw=2076px, scale=2.008x, normalized=1034px
+  image_03_registered.JPG: raw=515px, scale=2.076x, normalized=248px
+  image_04_registered.JPG: raw=3228px, scale=2.053x, normalized=1572px
+  image_05_registered.JPG: raw=2499px, scale=2.010x, normalized=1243px
+  image_06_registered.JPG: raw=2601px, scale=2.031x, normalized=1281px
+  image_07_registered.JPG: raw=1629px, scale=2.036x, normalized=800px
+  image_08_registered.JPG: raw=855px, scale=2.054x, normalized=416px
+  image_09_registered.JPG: raw=571px, scale=2.073x, normalized=275px
+  image_10_registered.JPG: raw=1779px, scale=2.084x, normalized=854px
+  image_11_registered.JPG: raw=2705px, scale=2.050x, normalized=1320px
+Tray 16: image_03_registered.JPG [distance] normalized distance=248px, label=36766px²
+
+Tray 17 candidate distances:
+  image_02_registered.JPG: raw=2523px, scale=2.008x, normalized=1257px
+  image_03_registered.JPG: raw=1231px, scale=2.076x, normalized=593px
+  image_04_registered.JPG: raw=3224px, scale=2.053x, normalized=1570px
+  image_05_registered.JPG: raw=2858px, scale=2.010x, normalized=1422px
+  image_06_registered.JPG: raw=3551px, scale=2.031x, normalized=1749px
+  image_07_registered.JPG: raw=2687px, scale=2.036x, normalized=1320px
+  image_08_registered.JPG: raw=2077px, scale=2.054x, normalized=1011px
+  image_09_registered.JPG: raw=688px, scale=2.073x, normalized=332px
+  image_10_registered.JPG: raw=801px, scale=2.084x, normalized=384px
+  image_11_registered.JPG: raw=2238px, scale=2.050x, normalized=1092px
+Tray 17: image_09_registered.JPG [distance] normalized distance=332px, label=0px²
+
+Tray 18 candidate distances:
+  image_02_registered.JPG: raw=2038px, scale=2.008x, normalized=1015px
+  image_03_registered.JPG: raw=2823px, scale=2.076x, normalized=1360px
+  image_04_registered.JPG: raw=3278px, scale=2.053x, normalized=1597px
+  image_05_registered.JPG: raw=2087px, scale=2.010x, normalized=1038px
+  image_06_registered.JPG: raw=551px, scale=2.031x, normalized=271px
+  image_07_registered.JPG: raw=1311px, scale=2.036x, normalized=644px
+  image_08_registered.JPG: raw=2687px, scale=2.054x, normalized=1308px
+  image_09_registered.JPG: raw=3482px, scale=2.073x, normalized=1680px
+  image_10_registered.JPG: raw=4176px, scale=2.084x, normalized=2004px
+  image_11_registered.JPG: raw=3945px, scale=2.050x, normalized=1924px
+Tray 18: image_06_registered.JPG [distance] normalized distance=271px, label=36492px²
+
+Tray 19 candidate distances:
+  image_02_registered.JPG: raw=1815px, scale=2.008x, normalized=904px
+  image_03_registered.JPG: raw=2869px, scale=2.076x, normalized=1382px
+  image_04_registered.JPG: raw=545px, scale=2.053x, normalized=265px
+  image_05_registered.JPG: raw=1657px, scale=2.010x, normalized=824px
+  image_06_registered.JPG: raw=3274px, scale=2.031x, normalized=1612px
+  image_07_registered.JPG: raw=3374px, scale=2.036x, normalized=1657px
+  image_08_registered.JPG: raw=4101px, scale=2.054x, normalized=1996px
+  image_09_registered.JPG: raw=3222px, scale=2.073x, normalized=1554px
+  image_10_registered.JPG: raw=2643px, scale=2.084x, normalized=1268px
+  image_11_registered.JPG: raw=1041px, scale=2.050x, normalized=508px
+Tray 19: image_04_registered.JPG [distance] normalized distance=265px, label=0px²
+
+Tray 20 candidate distances:
+  image_02_registered.JPG: raw=1443px, scale=2.008x, normalized=719px
+  image_03_registered.JPG: raw=2333px, scale=2.076x, normalized=1124px
+  image_04_registered.JPG: raw=681px, scale=2.053x, normalized=332px
+  image_05_registered.JPG: raw=1448px, scale=2.010x, normalized=721px
+  image_06_registered.JPG: raw=3001px, scale=2.031x, normalized=1478px
+  image_07_registered.JPG: raw=2939px, scale=2.036x, normalized=1443px
+  image_08_registered.JPG: raw=3566px, scale=2.054x, normalized=1736px
+  image_09_registered.JPG: raw=2665px, scale=2.073x, normalized=1286px
+  image_10_registered.JPG: raw=2080px, scale=2.084x, normalized=998px
+  image_11_registered.JPG: raw=597px, scale=2.050x, normalized=291px
+Tray 20: image_11_registered.JPG [distance] normalized distance=291px, label=41209px²
+
+Tray 21 candidate distances:
+  image_02_registered.JPG: raw=1509px, scale=2.008x, normalized=751px
+  image_03_registered.JPG: raw=2498px, scale=2.076x, normalized=1203px
+  image_04_registered.JPG: raw=2725px, scale=2.053x, normalized=1327px
+  image_05_registered.JPG: raw=1486px, scale=2.010x, normalized=739px
+  image_06_registered.JPG: raw=165px, scale=2.031x, normalized=81px
+  image_07_registered.JPG: raw=1139px, scale=2.036x, normalized=559px
+  image_08_registered.JPG: raw=2613px, scale=2.054x, normalized=1272px
+  image_09_registered.JPG: raw=3172px, scale=2.073x, normalized=1530px
+  image_10_registered.JPG: raw=3746px, scale=2.084x, normalized=1798px
+  image_11_registered.JPG: raw=3403px, scale=2.050x, normalized=1660px
+Tray 21: image_06_registered.JPG [distance] normalized distance=81px, label=37595px²
+
+Tray 22 candidate distances:
+  image_02_registered.JPG: raw=1713px, scale=2.008x, normalized=853px
+  image_03_registered.JPG: raw=2933px, scale=2.076x, normalized=1413px
+  image_04_registered.JPG: raw=2737px, scale=2.053x, normalized=1333px
+  image_05_registered.JPG: raw=1576px, scale=2.010x, normalized=784px
+  image_06_registered.JPG: raw=663px, scale=2.031x, normalized=327px
+  image_07_registered.JPG: raw=1652px, scale=2.036x, normalized=811px
+  image_08_registered.JPG: raw=3111px, scale=2.054x, normalized=1514px
+  image_09_registered.JPG: raw=3623px, scale=2.073x, normalized=1748px
+  image_10_registered.JPG: raw=4112px, scale=2.084x, normalized=1973px
+  image_11_registered.JPG: raw=3598px, scale=2.050x, normalized=1755px
+Tray 22: image_06_registered.JPG [distance] normalized distance=327px, label=37659px²
+
+Tray 23 candidate distances:
+  image_02_registered.JPG: raw=1555px, scale=2.008x, normalized=775px
+  image_03_registered.JPG: raw=2032px, scale=2.076x, normalized=979px
+  image_04_registered.JPG: raw=1179px, scale=2.053x, normalized=574px
+  image_05_registered.JPG: raw=1668px, scale=2.010x, normalized=830px
+  image_06_registered.JPG: raw=3113px, scale=2.031x, normalized=1533px
+  image_07_registered.JPG: raw=2878px, scale=2.036x, normalized=1413px
+  image_08_registered.JPG: raw=3312px, scale=2.054x, normalized=1612px
+  image_09_registered.JPG: raw=2268px, scale=2.073x, normalized=1094px
+  image_10_registered.JPG: raw=1566px, scale=2.084x, normalized=752px
+  image_11_registered.JPG: raw=257px, scale=2.050x, normalized=125px
+Tray 23: image_11_registered.JPG [distance] normalized distance=125px, label=35207px²
+
+Tray 24 candidate distances:
+  image_02_registered.JPG: raw=2468px, scale=2.008x, normalized=1229px
+  image_03_registered.JPG: raw=1735px, scale=2.076x, normalized=836px
+  image_04_registered.JPG: raw=2691px, scale=2.053x, normalized=1311px
+  image_05_registered.JPG: raw=2682px, scale=2.010x, normalized=1334px
+  image_06_registered.JPG: raw=3786px, scale=2.031x, normalized=1864px
+  image_07_registered.JPG: raw=3129px, scale=2.036x, normalized=1537px
+  image_08_registered.JPG: raw=2904px, scale=2.054x, normalized=1414px
+  image_09_registered.JPG: raw=1470px, scale=2.073x, normalized=709px
+  image_10_registered.JPG: raw=294px, scale=2.084x, normalized=141px
+  image_11_registered.JPG: raw=1497px, scale=2.050x, normalized=730px
+Tray 24: image_10_registered.JPG [distance] normalized distance=141px, label=34487px²
+
+Tray 25 candidate distances:
+  image_02_registered.JPG: raw=980px, scale=2.008x, normalized=488px
+  image_03_registered.JPG: raw=2672px, scale=2.076x, normalized=1287px
+  image_04_registered.JPG: raw=1600px, scale=2.053x, normalized=779px
+  image_05_registered.JPG: raw=589px, scale=2.010x, normalized=293px
+  image_06_registered.JPG: raw=1427px, scale=2.031x, normalized=703px
+  image_07_registered.JPG: raw=2014px, scale=2.036x, normalized=989px
+  image_08_registered.JPG: raw=3319px, scale=2.054x, normalized=1616px
+  image_09_registered.JPG: raw=3319px, scale=2.073x, normalized=1601px
+  image_10_registered.JPG: raw=3464px, scale=2.084x, normalized=1662px
+  image_11_registered.JPG: raw=2591px, scale=2.050x, normalized=1264px
+Tray 25: image_05_registered.JPG [distance] normalized distance=293px, label=40192px²
+
+Tray 26 candidate distances:
+  image_02_registered.JPG: raw=854px, scale=2.008x, normalized=426px
+  image_03_registered.JPG: raw=2000px, scale=2.076x, normalized=964px
+  image_04_registered.JPG: raw=742px, scale=2.053x, normalized=361px
+  image_05_registered.JPG: raw=950px, scale=2.010x, normalized=473px
+  image_06_registered.JPG: raw=2440px, scale=2.031x, normalized=1202px
+  image_07_registered.JPG: raw=2386px, scale=2.036x, normalized=1172px
+  image_08_registered.JPG: raw=3129px, scale=2.054x, normalized=1523px
+  image_09_registered.JPG: raw=2442px, scale=2.073x, normalized=1178px
+  image_10_registered.JPG: raw=2108px, scale=2.084x, normalized=1012px
+  image_11_registered.JPG: raw=1029px, scale=2.050x, normalized=502px
+Tray 26: image_04_registered.JPG [distance] normalized distance=361px, label=32277px²
+
+Tray 27 candidate distances:
+  image_02_registered.JPG: raw=2061px, scale=2.008x, normalized=1027px
+  image_03_registered.JPG: raw=2744px, scale=2.076x, normalized=1322px
+  image_04_registered.JPG: raw=1074px, scale=2.053x, normalized=523px
+  image_05_registered.JPG: raw=1977px, scale=2.010x, normalized=984px
+  image_06_registered.JPG: raw=3576px, scale=2.031x, normalized=1761px
+  image_07_registered.JPG: raw=3512px, scale=2.036x, normalized=1725px
+  image_08_registered.JPG: raw=4050px, scale=2.054x, normalized=1972px
+  image_09_registered.JPG: raw=2977px, scale=2.073x, normalized=1436px
+  image_10_registered.JPG: raw=2223px, scale=2.084x, normalized=1067px
+  image_11_registered.JPG: raw=618px, scale=2.050x, normalized=301px
+Tray 27: image_11_registered.JPG [distance] normalized distance=301px, label=40919px²
+
+Tray 28 candidate distances:
+  image_02_registered.JPG: raw=1743px, scale=2.008x, normalized=868px
+  image_03_registered.JPG: raw=3088px, scale=2.076x, normalized=1488px
+  image_04_registered.JPG: raw=430px, scale=2.053x, normalized=209px
+  image_05_registered.JPG: raw=1476px, scale=2.010x, normalized=734px
+  image_06_registered.JPG: raw=3050px, scale=2.031x, normalized=1502px
+  image_07_registered.JPG: raw=3329px, scale=2.036x, normalized=1635px
+  image_08_registered.JPG: raw=4226px, scale=2.054x, normalized=2057px
+  image_09_registered.JPG: raw=3536px, scale=2.073x, normalized=1706px
+  image_10_registered.JPG: raw=3117px, scale=2.084x, normalized=1496px
+  image_11_registered.JPG: raw=1586px, scale=2.050x, normalized=774px
+Tray 28: image_04_registered.JPG [distance] normalized distance=209px, label=40479px²
+
+Tray 29 candidate distances:
+  image_02_registered.JPG: raw=2123px, scale=2.008x, normalized=1057px
+  image_03_registered.JPG: raw=2492px, scale=2.076x, normalized=1201px
+  image_04_registered.JPG: raw=1444px, scale=2.053x, normalized=703px
+  image_05_registered.JPG: raw=2123px, scale=2.010x, normalized=1056px
+  image_06_registered.JPG: raw=3653px, scale=2.031x, normalized=1799px
+  image_07_registered.JPG: raw=3440px, scale=2.036x, normalized=1689px
+  image_08_registered.JPG: raw=3817px, scale=2.054x, normalized=1858px
+  image_09_registered.JPG: raw=2630px, scale=2.073x, normalized=1269px
+  image_10_registered.JPG: raw=1756px, scale=2.084x, normalized=843px
+  image_11_registered.JPG: raw=343px, scale=2.050x, normalized=167px
+Tray 29: image_11_registered.JPG [distance] normalized distance=167px, label=37086px²
+
+Tray 30 candidate distances:
+  image_02_registered.JPG: raw=2276px, scale=2.008x, normalized=1133px
+  image_03_registered.JPG: raw=3392px, scale=2.076x, normalized=1634px
+  image_04_registered.JPG: raw=904px, scale=2.053x, normalized=440px
+  image_05_registered.JPG: raw=1987px, scale=2.010x, normalized=989px
+  image_06_registered.JPG: raw=3595px, scale=2.031x, normalized=1770px
+  image_07_registered.JPG: raw=3835px, scale=2.036x, normalized=1884px
+  image_08_registered.JPG: raw=4629px, scale=2.054x, normalized=2253px
+  image_09_registered.JPG: raw=3765px, scale=2.073x, normalized=1816px
+  image_10_registered.JPG: raw=3222px, scale=2.084x, normalized=1546px
+  image_11_registered.JPG: raw=1601px, scale=2.050x, normalized=781px
+Tray 30: image_04_registered.JPG [distance] normalized distance=440px, label=34342px²
+
+Tray 31 candidate distances:
+  image_02_registered.JPG: raw=2851px, scale=2.008x, normalized=1420px
+  image_03_registered.JPG: raw=2293px, scale=2.076x, normalized=1105px
+  image_04_registered.JPG: raw=2814px, scale=2.053x, normalized=1371px
+  image_05_registered.JPG: raw=2952px, scale=2.010x, normalized=1469px
+  image_06_registered.JPG: raw=4231px, scale=2.031x, normalized=2084px
+  image_07_registered.JPG: raw=3643px, scale=2.036x, normalized=1789px
+  image_08_registered.JPG: raw=3494px, scale=2.054x, normalized=1701px
+  image_09_registered.JPG: raw=2032px, scale=2.073x, normalized=980px
+  image_10_registered.JPG: raw=906px, scale=2.084x, normalized=435px
+  image_11_registered.JPG: raw=1515px, scale=2.050x, normalized=739px
+Tray 31: image_10_registered.JPG [distance] normalized distance=435px, label=36500px²
+
+Tray 32 candidate distances:
+  image_02_registered.JPG: raw=2473px, scale=2.008x, normalized=1232px
+  image_03_registered.JPG: raw=926px, scale=2.076x, normalized=446px
+  image_04_registered.JPG: raw=3505px, scale=2.053x, normalized=1707px
+  image_05_registered.JPG: raw=2883px, scale=2.010x, normalized=1435px
+  image_06_registered.JPG: raw=3155px, scale=2.031x, normalized=1554px
+  image_07_registered.JPG: raw=2174px, scale=2.036x, normalized=1068px
+  image_08_registered.JPG: raw=1244px, scale=2.054x, normalized=606px
+  image_09_registered.JPG: raw=428px, scale=2.073x, normalized=206px
+  image_10_registered.JPG: raw=1574px, scale=2.084x, normalized=755px
+  image_11_registered.JPG: raw=2768px, scale=2.050x, normalized=1350px
+Tray 32: image_09_registered.JPG [distance] normalized distance=206px, label=35874px²
+
+Tray 33 candidate distances:
+  image_02_registered.JPG: raw=2118px, scale=2.008x, normalized=1055px
+  image_03_registered.JPG: raw=1701px, scale=2.076x, normalized=819px
+  image_04_registered.JPG: raw=2202px, scale=2.053x, normalized=1072px
+  image_05_registered.JPG: raw=2323px, scale=2.010x, normalized=1156px
+  image_06_registered.JPG: raw=3523px, scale=2.031x, normalized=1735px
+  image_07_registered.JPG: raw=2982px, scale=2.036x, normalized=1465px
+  image_08_registered.JPG: raw=2967px, scale=2.054x, normalized=1445px
+  image_09_registered.JPG: raw=1624px, scale=2.073x, normalized=783px
+  image_10_registered.JPG: raw=562px, scale=2.084x, normalized=270px
+  image_11_registered.JPG: raw=1026px, scale=2.050x, normalized=500px
+Tray 33: image_10_registered.JPG [distance] normalized distance=270px, label=36089px²
+
+Tray 34 candidate distances:
+  image_02_registered.JPG: raw=2574px, scale=2.008x, normalized=1282px
+  image_03_registered.JPG: raw=1111px, scale=2.076x, normalized=535px
+  image_04_registered.JPG: raw=3775px, scale=2.053x, normalized=1838px
+  image_05_registered.JPG: raw=3012px, scale=2.010x, normalized=1499px
+  image_06_registered.JPG: raw=2979px, scale=2.031x, normalized=1467px
+  image_07_registered.JPG: raw=1945px, scale=2.036x, normalized=955px
+  image_08_registered.JPG: raw=734px, scale=2.054x, normalized=357px
+  image_09_registered.JPG: raw=909px, scale=2.073x, normalized=439px
+  image_10_registered.JPG: raw=2130px, scale=2.084x, normalized=1022px
+  image_11_registered.JPG: raw=3188px, scale=2.050x, normalized=1555px
+Tray 34: image_08_registered.JPG [distance] normalized distance=357px, label=36810px²
+
+Tray 35 candidate distances:
+  image_02_registered.JPG: raw=2548px, scale=2.008x, normalized=1269px
+  image_03_registered.JPG: raw=2249px, scale=2.076x, normalized=1083px
+  image_04_registered.JPG: raw=2347px, scale=2.053x, normalized=1143px
+  image_05_registered.JPG: raw=2637px, scale=2.010x, normalized=1312px
+  image_06_registered.JPG: raw=3992px, scale=2.031x, normalized=1966px
+  image_07_registered.JPG: raw=3511px, scale=2.036x, normalized=1724px
+  image_08_registered.JPG: raw=3530px, scale=2.054x, normalized=1718px
+  image_09_registered.JPG: raw=2128px, scale=2.073x, normalized=1027px
+  image_10_registered.JPG: raw=1011px, scale=2.084x, normalized=485px
+  image_11_registered.JPG: raw=1055px, scale=2.050x, normalized=515px
+Tray 35: image_10_registered.JPG [distance] normalized distance=485px, label=37734px²
+
+Tray 36 candidate distances:
+  image_02_registered.JPG: raw=2844px, scale=2.008x, normalized=1416px
+  image_03_registered.JPG: raw=1911px, scale=2.076x, normalized=921px
+  image_04_registered.JPG: raw=3174px, scale=2.053x, normalized=1546px
+  image_05_registered.JPG: raw=3054px, scale=2.010x, normalized=1519px
+  image_06_registered.JPG: raw=4087px, scale=2.031x, normalized=2013px
+  image_07_registered.JPG: raw=3336px, scale=2.036x, normalized=1638px
+  image_08_registered.JPG: raw=2933px, scale=2.054x, normalized=1428px
+  image_09_registered.JPG: raw=1489px, scale=2.073x, normalized=718px
+  image_10_registered.JPG: raw=611px, scale=2.084x, normalized=293px
+  image_11_registered.JPG: raw=1958px, scale=2.050x, normalized=955px
+Tray 36: image_10_registered.JPG [distance] normalized distance=293px, label=30031px²
+
+Saved best_views.json for drawer_001
+
+All drawers finished.
+
+============================================================
+RUNNING: build_composite.py
+============================================================
+Found 1 drawers.
+
+==================================================
+Processing drawer_001
+==================================================
+Tray 1: image_08_registered.JPG
+Tray 2: image_07_registered.JPG
+Tray 3: image_02_registered.JPG
+Tray 4: image_03_registered.JPG
+Tray 5: image_04_registered.JPG
+Tray 6: image_02_registered.JPG
+Tray 7: image_03_registered.JPG
+Tray 8: image_03_registered.JPG
+Tray 9: image_05_registered.JPG
+Tray 10: image_06_registered.JPG
+Tray 11: image_07_registered.JPG
+Tray 12: image_06_registered.JPG
+Tray 13: image_02_registered.JPG
+Tray 14: image_11_registered.JPG
+Tray 15: image_09_registered.JPG
+Tray 16: image_03_registered.JPG
+Tray 17: image_09_registered.JPG
+Tray 18: image_06_registered.JPG
+Tray 19: image_04_registered.JPG
+Tray 20: image_11_registered.JPG
+Tray 21: image_06_registered.JPG
+Tray 22: image_06_registered.JPG
+Tray 23: image_11_registered.JPG
+Tray 24: image_10_registered.JPG
+Tray 25: image_05_registered.JPG
+Tray 26: image_04_registered.JPG
+Tray 27: image_11_registered.JPG
+Tray 28: image_04_registered.JPG
+Tray 29: image_11_registered.JPG
+Tray 30: image_04_registered.JPG
+Tray 31: image_10_registered.JPG
+Tray 32: image_09_registered.JPG
+Tray 33: image_10_registered.JPG
+Tray 34: image_08_registered.JPG
+Tray 35: image_10_registered.JPG
+Tray 36: image_10_registered.JPG
+Saved composites\drawer_001_composite.JPG
+
+All drawers finished.
+
+============================================================
+PIPELINE COMPLETE
+Total time: 0m 16s
+============================================================

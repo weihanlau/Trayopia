@@ -1,0 +1,16 @@
+TRAYOPIA LOG
+Started: 2026-10-07 11:41:22.122669
+Deployment: roboflow
+Distance mode: normalized
+============================================================
+
+============================================================
+RUNNING: prepare_images.py
+============================================================
+
+Found 209 images.
+
+Looking for reference images...
+DSC_0002.jpg: detected 29 ArUco markers
+
+Pipeline stopped at: prepare_images.py

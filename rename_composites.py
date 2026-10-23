@@ -6,12 +6,27 @@ import csv
 
 composite_folder = Path("composites")
 
-csv_path = Path(
-    input("CSV file containing drawer information: ")
+folder_path = Path(
+    input("Folder containing drawer information CSV: ")
     .strip()
     .strip('"')
 )
 
+csv_files = list(folder_path.glob("*.csv"))
+
+if len(csv_files) == 0:
+    raise FileNotFoundError(
+        f"No CSV file found in: {folder_path}"
+    )
+
+if len(csv_files) > 1:
+    raise ValueError(
+        f"Multiple CSV files found in: {folder_path}"
+    )
+
+csv_path = csv_files[0]
+
+print(f"Using CSV: {csv_path.name}")
 
 ############################ CHECK FILES ############################
 

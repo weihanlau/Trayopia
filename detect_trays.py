@@ -119,7 +119,7 @@ for registered_folder in drawer_folders:
 
         view_result = client.infer(
             str(registered_image),
-            model_id="entomology-unit-trays/8"
+            model_id="entomology-unit-trays/9"
         )
 
         view_trays = [
@@ -141,7 +141,7 @@ for registered_folder in drawer_folders:
 
     result = client.infer(
         str(image_path),
-        model_id="entomology-unit-trays/8"
+        model_id="entomology-unit-trays/9"
     )
 
 

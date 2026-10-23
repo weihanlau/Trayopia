@@ -1,0 +1,42 @@
+TRAYOPIA LOG
+Started: 2026-10-07 15:32:44.492919
+Deployment: roboflow
+Distance mode: normalized
+============================================================
+
+============================================================
+RUNNING: prepare_images.py
+============================================================
+
+Found 47 images.
+
+Looking for reference images...
+DSC_0316.jpg: detected 61 ArUco markers
+Reference found: DSC_0316.jpg (61 markers detected)
+DSC_0317.jpg: detected 21 ArUco markers
+DSC_0318.jpg: detected 26 ArUco markers
+DSC_0319.jpg: detected 20 ArUco markers
+DSC_0320.jpg: detected 23 ArUco markers
+DSC_0321.jpg: detected 20 ArUco markers
+DSC_0322.jpg: detected 30 ArUco markers
+DSC_0323.jpg: detected 22 ArUco markers
+DSC_0324.jpg: detected 24 ArUco markers
+DSC_0325.jpg: detected 21 ArUco markers
+DSC_0326.jpg: detected 32 ArUco markers
+DSC_0327.jpg: detected 61 ArUco markers
+Reference found: DSC_0327.jpg (61 markers detected)
+DSC_0328.jpg: detected 25 ArUco markers
+DSC_0329.jpg: detected 19 ArUco markers
+DSC_0330.jpg: detected 22 ArUco markers
+DSC_0331.jpg: detected 25 ArUco markers
+DSC_0332.jpg: detected 21 ArUco markers
+DSC_0333.jpg: detected 32 ArUco markers
+DSC_0334.jpg: detected 20 ArUco markers
+DSC_0335.jpg: detected 23 ArUco markers
+DSC_0336.jpg: detected 19 ArUco markers
+DSC_0337.jpg: detected 30 ArUco markers
+DSC_0338.jpg: detected 61 ArUco markers
+Reference found: DSC_0338.jpg (61 markers detected)
+DSC_0339.jpg: detected 21 ArUco markers
+DSC_0340.jpg: detected 30 ArUco markers
+DSC_0341.jpg: detected 21 ArUco markers
