@@ -52,7 +52,7 @@ Place 8 ArUco markers around the drawer in the layout shown below.
 We currently work with a layout using 61 ArUco markers arranged on a square ring-shaped Corroplast board that sits snugly in the indentation of the drawer lid. This provides more reference points for image registration and makes it easier to maintain sufficient marker visibility when repositioning the drawer.</small>
 
 <p align="center">
-  <img src="IMAGES/ArUco_61.JPG" height="300">
+  <img src="images/ArUco_61.JPG" height="300">
 </p>
 
 
