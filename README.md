@@ -49,7 +49,20 @@ Place 8 ArUco markers around the drawer in the layout shown below.
   <img src="images/ArUco_8.JPG" height="300">
 </p>
 
-Note: We currently work with a layout using 61 ArUco markers arranged on a square ring-shaped Corroplast board that sits snugly in the indentation of the drawer lid. This provides more reference points for image registration and makes it easier to maintain sufficient marker visibility when repositioning the drawer.</small>
+We currently work with a layout using 61 ArUco markers arranged on a square ring-shaped Corroplast board that sits snugly in the indentation of the drawer lid. This provides more reference points for image registration and makes it easier to maintain sufficient marker visibility when repositioning the drawer.</small>
+
+<p align="center">
+  <img src="IMAGES/ArUco_61.JPG" height="300">
+</p>
+
+
+The number of ArUco markers used **must** also be reflected in prepare_images.py. Locate the following line:
+
+```python
+is_reference = marker_count >= 50
+```
+
+Change 50 to match the number of markers in your layout (e.g., 8 for the eight-marker layout). **Note**: This threshold is used to identify reference images and distinguish successive drawers during image preparation. Subsequent photographs must contain fewer markers than the specified threshold, otherwise they may be incorrectly identified as reference images, preventing the script from correctly separating photographs into individual drawer series.
 
 #### Photograph positions
 
