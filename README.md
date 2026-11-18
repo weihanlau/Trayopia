@@ -49,11 +49,13 @@ Place 8 ArUco markers around the drawer in the layout shown below.
   <img src="images/ArUco_8.JPG" height="300">
 </p>
 
+Note: We currently work with a layout using 61 ArUco markers arranged on a square ring-shaped Corroplast board that sits snugly in the indentation of the drawer lid. This provides more reference points for image registration and makes it easier to maintain sufficient marker visibility when repositioning the drawer.</small>
+
 #### Photograph positions
 
-Trayopia uses seven photographs per drawer*. 
+Trayopia uses seven to eleven photographs per drawer*. 
 
-1. **Reference:** Centre the drawer beneath the camera so that all ArUco markers are visible. This image defines the layout of the final composite. **IMPORTANT**: Make sure that *all* 8 ArUco markers are visible in the reference image, but not in subsequent images.
+1. **Reference:** Centre the drawer beneath the camera so that all ArUco markers are visible. This image defines the layout of the final composite and serves to distinguish one drawer's series of photographs from the next. **IMPORTANT**: All 8 ArUco markers must be visible in the reference image, but not necessarily in subsequent images. If using more than 8 markers, all markers must likewise be visible in the reference image.
 2. **Top left**
 3. **Top centre**
 4. **Top right**
