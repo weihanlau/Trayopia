@@ -1,4 +1,4 @@
-<p align="right">
+<p align="left">
   <img src="images/TrayopiaLogo.jpg">
 </p>
 
