@@ -1,4 +1,6 @@
-# Trayopia
+<p align="right">
+  <img src="images/TrayopiaLogo.jpg">
+</p>
 
 Trayopia is a simple tool for combining multiple images of entomological drawers into a composite that provides unobscured views of specimens and labels within individual unit trays.
 
@@ -39,17 +41,15 @@ Additional methods for selecting the optimal view of each unit tray will be adde
 
 ## Image capture protocol
 
-Before imaging, place [ArUco markers](https://fodi.github.io/arucosheetgen/) around the drawer as shown in the example below. The markers provide reference points that allow Trayopia to align the drawer across photographs.
-
 #### ArUco marker layout
 
-Place 8 ArUco markers around the drawer in the layout shown below. 
+Before imaging, place 8 [ArUco markers](https://fodi.github.io/arucosheetgen/) around the drawer as shown in the example below. The markers provide reference points that allow Trayopia to align the drawer across photographs.
 
 <p align="center">
   <img src="images/ArUco_8.JPG" height="300">
 </p>
 
-We currently work with a layout using 61 ArUco markers arranged on a square ring-shaped Corroplast board that sits snugly in the indentation of the drawer lid. This provides more reference points for image registration and makes it easier to maintain sufficient marker visibility when repositioning the drawer.</small>
+We currently work with a layout using ~60 ArUco markers arranged on a square ring-shaped Corroplast board that sits snugly in the indentation of the drawer lid. This provides more reference points for image registration and makes it easier to maintain sufficient marker visibility when repositioning the drawer.</small>
 
 <p align="center">
   <img src="images/ArUco_61.JPG" height="300">
